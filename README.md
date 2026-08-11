@@ -1,20 +1,15 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# MAROON ATK
 
-# Run and deploy your AI Studio app
+### Solusi Lengkap Peralatan & Kebutuhan Kantor
 
-This contains everything you need to run your app locally.
+MAROON ATK adalah website company profile yang dirancang sebagai media informasi dan katalog digital untuk memperkenalkan produk serta layanan pengadaan peralatan dan kebutuhan kantor.
 
-View your app in AI Studio: https://ai.studio/apps/f0134bf9-fa82-4946-a49f-4579704b3803
+MAROON ATK hadir sebagai supplier, vendor, distributor, sekaligus mitra pengadaan yang melayani kebutuhan instansi pemerintah, sekolah, kampus, perusahaan swasta, dan perkantoran.
 
-## Run Locally
+Website ini menampilkan informasi mengenai produk, layanan, keunggulan, serta kontak MAROON ATK secara profesional, modern, dan mudah diakses.
 
-**Prerequisites:**  Node.js
+### Developer
 
+**Moh. Arbi Ardiansyah**
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+© 2026 MAROON ATK — All Rights Reserved.
