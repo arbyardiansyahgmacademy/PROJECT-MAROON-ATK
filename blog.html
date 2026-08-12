@@ -20,6 +20,409 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
+  <style>
+    /* ===== HERO FEATURES GRID (RAMPI) ===== */
+    .hero-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 0.9rem 0.9rem;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-align: left;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .hero-feature-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    @media (max-width: 768px) {
+      .hero-features-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-feature-card {
+        padding: 0.7rem 0.7rem;
+      }
+      .hero-feature-card h4 {
+        font-size: 0.8rem !important;
+      }
+      .hero-feature-card p {
+        font-size: 0.65rem !important;
+      }
+    }
+
+    /* ===== BLOG LAYOUT - CLEAN GRID + POST 3 COLUMNS ===== */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ---------- SIDEBAR ---------- */
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .sidebar-section h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted, #6c757d);
+      border-bottom: 2px solid var(--border-color, #e0e0e0);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    /* ---- Terbaru dengan gambar ---- */
+    .sidebar-latest-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-latest-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-color, #e0e0e0);
+    }
+
+    .sidebar-latest-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .sidebar-latest-item .thumb {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bg-gray, #f8f9fa);
+    }
+
+    .sidebar-latest-item .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-latest-item:hover .thumb img {
+      transform: scale(1.05);
+    }
+
+    .sidebar-latest-item .content {
+      flex: 1;
+      min-width: 0; /* mencegah overflow */
+    }
+
+    .sidebar-latest-item .content a {
+      text-decoration: none;
+      color: var(--text-dark, #111);
+      font-weight: 600;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      transition: color 0.2s ease;
+      display: block;
+    }
+
+    .sidebar-latest-item .content a:hover {
+      color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .sidebar-latest-item .post-date {
+      font-size: 0.7rem;
+      color: var(--text-muted, #6c757d);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    /* ---- Sidebar Hero ---- */
+    .sidebar-hero {
+      background: var(--bg-gray, #f8f9fa);
+      border-radius: var(--radius-md, 8px);
+      padding: 1.25rem;
+      border: 1px solid var(--border-color, #e0e0e0);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .sidebar-hero:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .sidebar-hero .hero-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary-maroon, #7a1a1a);
+      font-weight: 700;
+    }
+
+    .sidebar-hero h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0.3rem 0 0.2rem;
+      line-height: 1.3;
+    }
+
+    .sidebar-hero h4 a {
+      text-decoration: none;
+      color: var(--text-dark, #111);
+      transition: color 0.2s ease;
+    }
+
+    .sidebar-hero h4 a:hover {
+      color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .sidebar-hero .post-date {
+      font-size: 0.75rem;
+      color: var(--text-muted, #6c757d);
+    }
+
+    /* ---------- MAIN CONTENT (3 COLUMNS) ---------- */
+    .blog-main {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .blog-post-card {
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      border-radius: var(--radius-sm, 6px);
+      overflow: hidden;
+    }
+
+    .blog-post-card .post-thumb {
+      border-radius: var(--radius-sm, 6px);
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      background: var(--bg-gray, #f8f9fa);
+    }
+
+    .blog-post-card .post-thumb img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .blog-post-card:hover .post-thumb img {
+      transform: scale(1.03);
+    }
+
+    .blog-post-card .post-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary-maroon, #7a1a1a);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .blog-post-card .post-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 0.3rem;
+    }
+
+    .blog-post-card .post-title a {
+      text-decoration: none;
+      color: var(--text-dark, #111);
+      transition: color 0.2s ease;
+    }
+
+    .blog-post-card .post-title a:hover {
+      color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .blog-post-card .post-date {
+      font-size: 0.75rem;
+      color: var(--text-muted, #6c757d);
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-post-card .post-excerpt {
+      font-size: 0.88rem;
+      color: var(--text-muted, #6c757d);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+      flex: 1;
+    }
+
+    .blog-post-card .post-readmore {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-maroon, #7a1a1a);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: gap 0.2s ease;
+    }
+
+    .blog-post-card .post-readmore:hover {
+      gap: 0.6rem;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .blog-main {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .blog-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .blog-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .sidebar-hero {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .blog-sidebar {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+      .sidebar-latest-item .thumb {
+        width: 50px;
+        height: 50px;
+      }
+      .sidebar-latest-item .content a {
+        font-size: 0.85rem;
+      }
+      .blog-post-card .post-title {
+        font-size: 0.95rem;
+      }
+      .blog-post-card .post-excerpt {
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .blog-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+      .blog-sidebar {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .sidebar-latest-item .thumb {
+        width: 55px;
+        height: 55px;
+      }
+      .sidebar-latest-item .content a {
+        font-size: 0.9rem;
+      }
+      .sidebar-hero h4 {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .blog-main {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      .blog-sidebar {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .sidebar-latest-item {
+        gap: 0.7rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.8rem;
+      }
+      .sidebar-latest-item .thumb {
+        width: 60px;
+        height: 60px;
+      }
+      .sidebar-latest-item .content a {
+        font-size: 0.9rem;
+      }
+      .blog-post-card .post-title {
+        font-size: 0.95rem;
+      }
+      .blog-post-card .post-excerpt {
+        font-size: 0.85rem;
+      }
+      .blog-post-card .post-thumb img {
+        aspect-ratio: 16 / 9;
+      }
+      .sidebar-hero {
+        padding: 1rem;
+      }
+      .sidebar-hero h4 {
+        font-size: 0.9rem;
+      }
+      .section {
+        padding: 2rem 0;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .sidebar-latest-item .thumb {
+        width: 50px;
+        height: 50px;
+      }
+      .sidebar-latest-item .content a {
+        font-size: 0.8rem;
+      }
+      .blog-post-card .post-title {
+        font-size: 0.85rem;
+      }
+      .blog-post-card .post-excerpt {
+        font-size: 0.78rem;
+      }
+      .sidebar-hero h4 {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,41 +446,42 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container navbar-container">
-      <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
-  <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;">
-  <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
-</a>
-      <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
-        <li class="nav-item"><a href="tentang-kami.html" class="nav-link">Tentang Kami</a></li>
-        <li class="nav-item nav-item-dropdown">
-          <span class="nav-link dropdown-toggle">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></span>
-          <div class="dropdown-menu">
-            <a href="produk/atk.html" class="dropdown-item"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
-            <a href="produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
-            <a href="produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
-            <a href="produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
-            <a href="produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
-            <a href="produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
-            <a href="produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
-            <a href="produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="paket.html" class="nav-link">Paket</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
-        <li class="nav-item"><a href="kontak.html" class="nav-link">Kontak</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi" target="_blank" class="btn btn-whatsapp btn-sm">
-          <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
-        </a>
-      </div>
+  <!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container navbar-container">
+    <a href="../index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;" />
+      <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="../tentang-kami.html" class="nav-link">Tentang Kami</a></li>
+      <li class="nav-item nav-item-dropdown">
+        <!-- Mengubah <span> menjadi <a> dan menambahkan href="../produk.html" -->
+        <a href="../produk.html" class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></a>
+        <div class="dropdown-menu">
+          <a href="../produk/atk.html" class="dropdown-item active"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
+          <a href="../produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
+          <a href="../produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
+          <a href="../produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
+          <a href="../produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
+          <a href="../produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
+          <a href="../produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
+          <a href="../produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="../paket.html" class="nav-link">Paket</a></li>
+      <li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="../kontak.html" class="nav-link">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20ATK" target="_blank" class="btn btn-whatsapp btn-sm">
+        <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
+      </a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb-container">
@@ -90,103 +494,317 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="section section-bg-light" style="padding: 3.5rem 0;">
-    <div class="container text-center" style="max-width: 820px; margin: 0 auto;">
-      <span class="badge-tag" style="background-color: var(--maroon-soft); color: var(--primary-maroon); padding: 0.35rem 1rem; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600; border: 1px solid var(--maroon-border);">EDUKASI & INSIGHT</span>
-      <h1 style="margin-top: 0.75rem; margin-bottom: 1rem;">Blog & Panduan Peralatan Kantor</h1>
-      <p style="color: var(--text-muted); font-size: 1.05rem;">
-        Artikel referensi dan tips praktis seputar tata ruang kantor, pemilihan vendor ATK, serta modernisasi fasilitas ruang rapat digital.
+  <!-- ===== HERO BLOG - RAMPI DENGAN GRID FITUR ===== -->
+  <section style="
+    background: linear-gradient(135deg, #7a1a1a 0%, #4a0f0f 100%);
+    padding: 3rem 0 3.5rem;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+  ">
+    <div class="container" style="
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    ">
+      <!-- Badge -->
+      <span style="
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        padding: 0.35rem 1.1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 1rem;
+        backdrop-filter: blur(4px);
+      ">
+        <i class="fas fa-pen-fancy" style="color: #c9a84c;"></i> EDUKASI & INSIGHT
+      </span>
+
+      <!-- Title -->
+      <h1 style="
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      ">Blog & Panduan Peralatan Kantor</h1>
+
+      <!-- Description -->
+      <p style="
+        font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 700px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+        font-weight: 400;
+      ">
+        Kumpulan artikel referensi, tips praktis, dan panduan lengkap seputar pengadaan peralatan kantor, penataan furniture ergonomis, serta teknologi smart display dari tim MAROON ATK.
       </p>
+
+      <!-- Grid 3 Fitur Utama Blog -->
+      <div class="hero-features-grid">
+        <!-- Fitur 1: Edukasi & Tips -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Edukasi & Tips</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Pengetahuan seputar peralatan kantor</p>
+          </div>
+        </div>
+
+        <!-- Fitur 2: Panduan Praktis -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Panduan Praktis</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Prosedur & tata kelola pengadaan</p>
+          </div>
+        </div>
+
+        <!-- Fitur 3: Update Terbaru -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-newspaper"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Update Terbaru</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Info promo & produk terbaru</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Decorative Elements (ramping) -->
+    <div style="
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    "></div>
+    <div style="
+      position: absolute;
+      bottom: -15%;
+      left: -3%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    "></div>
   </section>
 
-  <!-- Blog Grid -->
-  <section class="section">
+  <!-- ===== BLOG LAYOUT (CLEAN GRID + 3 COLUMNS) ===== -->
+  <section class="section" style="padding-top: 1.5rem;">
     <div class="container">
-      <div class="blog-grid">
 
-        <!-- Artikel 1 -->
-        <article class="blog-card">
-          <div class="blog-thumb">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Panduan Memilih Supplier ATK Terpercaya" width="600" height="400" loading="lazy">
+      <div class="blog-layout">
+
+        <!-- ===== SIDEBAR KIRI ===== -->
+        <aside class="blog-sidebar">
+
+          <!-- LATEST POSTS dengan thumbnail -->
+          <div class="sidebar-section">
+            <h3>TERBARU</h3>
+            <ul class="sidebar-latest-list">
+
+              <!-- Item 1 -->
+              <li class="sidebar-latest-item">
+                <div class="thumb">
+                  <img src="assets/image/PAKET/Paket-Kantor-Baru.webp" alt="Paket Kantor Baru" loading="lazy">
+                </div>
+                <div class="content">
+                  <a href="blog/promo-paket-kantor-2026.html">Promo Paket Kantor Baru 2026 – Diskon Hingga 15%</a>
+                  <span class="post-date">12 Agustus 2026</span>
+                </div>
+              </li>
+
+              <!-- Item 2 -->
+              <li class="sidebar-latest-item">
+                <div class="thumb">
+                  <img src="assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-1.webp" alt="Kursi Ergonomis" loading="lazy">
+                </div>
+                <div class="content">
+                  <a href="blog/tips-memilih-kursi-ergonomis.html">Tips Memilih Kursi Ergonomis untuk Kesehatan Staf</a>
+                  <span class="post-date">5 Agustus 2026</span>
+                </div>
+              </li>
+
+              <!-- Item 3 -->
+              <li class="sidebar-latest-item">
+                <div class="thumb">
+                  <img src="assets/image/VIDEOTRON/Videotron-LED-SLIDE-1.webp" alt="Videotron LED" loading="lazy">
+                </div>
+                <div class="content">
+                  <a href="blog/keunggulan-videotron-vs-proyektor.html">Keunggulan Videotron LED vs Proyektor untuk Ruang Rapat</a>
+                  <span class="post-date">28 Juli 2026</span>
+                </div>
+              </li>
+
+              <!-- Item 4 -->
+              <li class="sidebar-latest-item">
+                <div class="thumb">
+                  <img src="assets/image/HVS/Kertas-HVS-SLIDE-1.webp" alt="Pengadaan ATK" loading="lazy">
+                </div>
+                <div class="content">
+                  <a href="blog/panduan-pengadaan-atk-instansi.html">Panduan Pengadaan ATK untuk Instansi Pemerintah</a>
+                  <span class="post-date">20 Juli 2026</span>
+                </div>
+              </li>
+
+            </ul>
           </div>
-          <div class="blog-body">
-            <div class="blog-meta">
-              <span><i class="far fa-calendar-alt"></i> 10 Mei 2026</span>
-              <span><i class="far fa-folder"></i> Pengadaan Kantor</span>
+
+          <!-- REKOMENDASI PRODUK / HERO POST -->
+          <div class="sidebar-hero">
+            <div class="hero-category">REKOMENDASI</div>
+            <h4><a href="blog/interactive-flat-panel-smart-board.html">Interactive Flat Panel Smart Board 65" 4K – Solusi Rapat Modern</a></h4>
+            <span class="post-date">15 Agustus 2026</span>
+          </div>
+
+          <!-- PROMO SIDEBAR -->
+          <div class="sidebar-hero" style="background: var(--maroon-soft, #f5e6e6); border-color: var(--primary-maroon, #7a1a1a);">
+            <div class="hero-category" style="color: #fff; background: var(--primary-maroon); display: inline-block; padding: 0.1rem 0.6rem; border-radius: 4px;">PROMO</div>
+            <h4><a href="paket.html" style="color: var(--primary-maroon);">Paket Pengadaan Kantor Hemat 15% – Periode Agustus 2026</a></h4>
+            <span class="post-date">Dapatkan harga spesial sekarang!</span>
+          </div>
+
+        </aside>
+
+        <!-- ===== MAIN CONTENT (3 COLUMNS) ===== -->
+        <div class="blog-main">
+
+          <!-- Post 1 -->
+          <article class="blog-post-card">
+            <div class="post-thumb">
+              <img src="assets/image/HVS/Kertas-HVS-SLIDE-6.webp" alt="Panduan Memilih Supplier ATK" loading="lazy">
             </div>
-            <h2 class="blog-title">
-              <a href="blog/artikel-1.html">Panduan Memilih Supplier ATK & Peralatan Kantor Terpercaya untuk Instansi</a>
-            </h2>
-            <p class="blog-excerpt">
-              Tips penting memilih vendor pengadaan kantor agar proses transaksi aman, legalitas lengkap, dan stok barang terjamin berkualitas tinggi...
-            </p>
-            <a href="blog/artikel-1.html" class="blog-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
+            <div class="post-category">PENGADAAN</div>
+            <h3 class="post-title"><a href="blog/panduan-memilih-supplier-atk.html">Panduan Memilih Supplier ATK & Peralatan Kantor Terpercaya</a></h3>
+            <div class="post-date">10 Agustus 2026</div>
+            <p class="post-excerpt">Tips penting memilih vendor pengadaan kantor agar proses transaksi aman, legalitas lengkap, dan stok barang terjamin berkualitas tinggi.</p>
+            <a href="blog/panduan-memilih-supplier-atk.html" class="post-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </article>
 
-        <!-- Artikel 2 -->
-        <article class="blog-card">
-          <div class="blog-thumb">
-            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80" alt="Tips Menata Furniture Ruang Kerja Kantor" width="600" height="400" loading="lazy">
-          </div>
-          <div class="blog-body">
-            <div class="blog-meta">
-              <span><i class="far fa-calendar-alt"></i> 08 Mei 2026</span>
-              <span><i class="far fa-folder"></i> Interior Kantor</span>
+          <!-- Post 2 -->
+          <article class="blog-post-card">
+            <div class="post-thumb">
+              <img src="assets/image/SET-SOFA-TAMU/Set-Sofa-Tamu-SLIDE-4.webp" alt="Tips Menata Furniture Kantor" loading="lazy">
             </div>
-            <h2 class="blog-title">
-              <a href="blog/artikel-2.html">Tips Menata Furniture Ruang Kerja Kantor Agar Pegawai Lebih Produktif</a>
-            </h2>
-            <p class="blog-excerpt">
-              Penataan meja, kursi ergonomis, dan sirkulasi udara yang tepat berpengaruh langsung terhadap fokus kerja dan kesehatan staf perkantoran...
-            </p>
-            <a href="blog/artikel-2.html" class="blog-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
+            <div class="post-category">FURNITURE</div>
+            <h3 class="post-title"><a href="blog/tips-menata-furniture-kantor-produktif.html">7 Tips Menata Furniture Kantor Agar Staf Lebih Produktif</a></h3>
+            <div class="post-date">8 Agustus 2026</div>
+            <p class="post-excerpt">Penataan meja, kursi ergonomis, dan sirkulasi udara yang tepat berpengaruh langsung terhadap fokus kerja dan kesehatan staf perkantoran.</p>
+            <a href="blog/tips-menata-furniture-kantor-produktif.html" class="post-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </article>
 
-        <!-- Artikel 3 -->
-        <article class="blog-card">
-          <div class="blog-thumb">
-            <img src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=600&q=80" alt="Keunggulan Videotron LED vs Proyektor" width="600" height="400" loading="lazy">
-          </div>
-          <div class="blog-body">
-            <div class="blog-meta">
-              <span><i class="far fa-calendar-alt"></i> 03 Mei 2026</span>
-              <span><i class="far fa-folder"></i> Teknologi Display</span>
+          <!-- Post 3 -->
+          <article class="blog-post-card">
+            <div class="post-thumb">
+              <img src="assets/image/VIDEOTRON/Videotron-LED-SLIDE-3.webp" alt="Keunggulan Videotron LED" loading="lazy">
             </div>
-            <h2 class="blog-title">
-              <a href="blog/artikel-3.html">Keunggulan Videotron LED vs Proyektor Konvensional untuk Ruang Rapat</a>
-            </h2>
-            <p class="blog-excerpt">
-              Mengapa banyak gedung instansi dan perkantoran beralih menggunakan Videotron LED untuk tampilan visual presentasi yang lebih jernih dan tahan lama...
-            </p>
-            <a href="blog/artikel-3.html" class="blog-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
+            <div class="post-category">TEKNOLOGI</div>
+            <h3 class="post-title"><a href="blog/keunggulan-videotron-led-proyektor.html">Videotron LED vs Proyektor: Mana yang Lebih Unggul untuk Ruang Rapat?</a></h3>
+            <div class="post-date">3 Agustus 2026</div>
+            <p class="post-excerpt">Mengapa banyak gedung instansi dan perkantoran beralih menggunakan Videotron LED untuk tampilan visual presentasi yang lebih jernih dan tahan lama.</p>
+            <a href="blog/keunggulan-videotron-led-proyektor.html" class="post-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </article>
 
-        <!-- Artikel 4 -->
-        <article class="blog-card">
-          <div class="blog-thumb">
-            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Mengapa Interactive Flat Panel Penting" width="600" height="400" loading="lazy">
-          </div>
-          <div class="blog-body">
-            <div class="blog-meta">
-              <span><i class="far fa-calendar-alt"></i> 28 April 2026</span>
-              <span><i class="far fa-folder"></i> Smart Board</span>
+          <!-- Post 4 -->
+          <article class="blog-post-card">
+            <div class="post-thumb">
+              <img src="assets/image/SMARTBOARD/Interactif-Panel-Smart-Board-SLIDE-3.webp" alt="Interactive Flat Panel" loading="lazy">
             </div>
-            <h2 class="blog-title">
-              <a href="blog/artikel-4.html">Mengapa Interactive Flat Panel (IFP) Penting untuk Ruang Rapat Modern</a>
-            </h2>
-            <p class="blog-excerpt">
-              Interactive Flat Panel menggabungkan fungsi papan tulis, proyektor, dan sistem telekonferensi dalam satu layar sentuh pintar yang efisien...
-            </p>
-            <a href="blog/artikel-4.html" class="blog-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
+            <div class="post-category">SMART BOARD</div>
+            <h3 class="post-title"><a href="blog/interactive-flat-panel-untuk-rapat-modern.html">Mengapa Interactive Flat Panel (IFP) Wajib Ada di Ruang Rapat Modern</a></h3>
+            <div class="post-date">28 Juli 2026</div>
+            <p class="post-excerpt">Interactive Flat Panel menggabungkan fungsi papan tulis, proyektor, dan sistem telekonferensi dalam satu layar sentuh pintar yang efisien dan hemat ruang.</p>
+            <a href="blog/interactive-flat-panel-untuk-rapat-modern.html" class="post-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </article>
 
-      </div>
+          <!-- Post 5 -->
+          <article class="blog-post-card">
+            <div class="post-thumb">
+              <img src="assets/image/DIGITAL-WHITEBOARD/Digital-Whiteboard-SLIDE-2.webp" alt="Digital Whiteboard Portable" loading="lazy">
+            </div>
+            <div class="post-category">INOVASI</div>
+            <h3 class="post-title"><a href="blog/digital-whiteboard-portable-untuk-pendidikan.html">Digital Whiteboard Portable 55" – Solusi Pembelajaran Interaktif</a></h3>
+            <div class="post-date">22 Juli 2026</div>
+            <p class="post-excerpt">Papan tulis digital portabel dengan roda dan kamera terintegrasi, cocok untuk kelas modern, ruang seminar, dan presentasi dinamis.</p>
+            <a href="blog/digital-whiteboard-portable-untuk-pendidikan.html" class="post-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </article>
+
+          <!-- Post 6 -->
+          <article class="blog-post-card">
+            <div class="post-thumb">
+              <img src="assets/image/HVS/Kertas-HVS-SLIDE-2.webp" alt="Pengadaan ATK Instansi" loading="lazy">
+            </div>
+            <div class="post-category">PENGADAAN</div>
+            <h3 class="post-title"><a href="blog/prosedur-pengadaan-atk-instansi-pemerintah.html">Prosedur Pengadaan ATK untuk Instansi Pemerintah dan BUMN</a></h3>
+            <div class="post-date">15 Juli 2026</div>
+            <p class="post-excerpt">Panduan lengkap prosedur pengadaan Alat Tulis Kantor (ATK) melalui e-procurement, mulai dari penyusunan RKS hingga verifikasi barang.</p>
+            <a href="blog/prosedur-pengadaan-atk-instansi-pemerintah.html" class="post-readmore">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </article>
+
+        </div><!-- /blog-main -->
+
+      </div><!-- /blog-layout -->
+
     </div>
   </section>
 
@@ -208,12 +826,12 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-  <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
-    <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;">
-    <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
-  </a>
-  <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
-</div>
+          <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
+            <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;">
+            <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
+          </a>
+          <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
+        </div>
         <div class="footer-col">
           <h4>Kategori Utama</h4>
           <ul class="footer-links">
@@ -236,8 +854,9 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Kontak WA Resmi</h4>
+          <h4>Kontak Resmi</h4>
           <ul class="footer-contact-list">
+            <li><i class="fas fa-phone-alt"></i> 0889-8964-3555</li>
             <li><i class="fab fa-whatsapp"></i> 0889-8964-3555</li>
             <li><i class="fas fa-envelope"></i> info@maroonatk.web.id</li>
             <li><i class="fas fa-globe"></i> maroonatk.web.id</li>
@@ -245,7 +864,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div>&copy; 2026 MAROON ATK. All Rights Reserved.  </div>
+        <div>&copy; 2026 MAROON ATK. All Rights Reserved.</div>
       </div>
     </div>
   </footer>

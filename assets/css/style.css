@@ -1295,45 +1295,75 @@ p:last-child {
   color: #6B7280;
 }
 
-/* Floating WhatsApp Button */
+/* --- FLOATING WHATSAPP - HIJAU ASLI DENGAN VARIASI MENARIK --- */
 .float-wa {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background-color: var(--primary-maroon);
+  /* Warna hijau WhatsApp dengan gradasi */
+  background: linear-gradient(135deg, #25D366, #128C7E);
   color: #ffffff;
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
-  box-shadow: 0 6px 20px rgba(128, 0, 32, 0.35);
+  font-size: 2rem;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 999;
-  transition: var(--transition);
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  text-decoration: none;
+  
+  /* Animasi denyut halus (pulse) */
+  animation: wa-pulse 2.4s ease-in-out infinite;
 }
 
+/* Efek hover – membesar, berputar, dan bayangan lebih kuat */
 .float-wa:hover {
-  transform: scale(1.1);
-  background-color: var(--dark-maroon);
+  transform: scale(1.15) rotate(-6deg);
+  background: linear-gradient(135deg, #1ebe57, #0c6b5e);
+  box-shadow: 0 10px 40px rgba(37, 211, 102, 0.7);
   color: #ffffff;
-  box-shadow: 0 8px 25px rgba(128, 0, 32, 0.45);
 }
 
+/* Animasi denyut (pulse) – lingkaran bayangan membesar & memudar */
+@keyframes wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Ikon WhatsApp – sedikit animasi putar saat hover (opsional) */
+.float-wa i {
+  transition: transform 0.3s ease;
+}
+
+.float-wa:hover i {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Tooltip (jika Anda aktifkan) – disesuaikan dengan hijau */
 .float-wa .tooltip {
-  position: absolute;
-  right: 68px;
-  background-color: #111827;
+  background: #075e54;
   color: #ffffff;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-sm);
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
   font-size: 0.8rem;
+  font-weight: 600;
   white-space: nowrap;
+  position: absolute;
+  right: 70px;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.2s ease;
-  font-weight: 600;
+  transition: opacity 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .float-wa:hover .tooltip {
@@ -3725,3 +3755,360 @@ p:last-child {
     transform: rotate(180deg) !important;
   }
 }
+
+/* ===== BENEFIT / KEUNTUNGAN CARD ===== */
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  position: relative;
+  background: var(--bg-card, #ffffff);
+  padding: 2rem 2rem 2.5rem;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid var(--border-color, #e0e0e0);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: default;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Garis aksen bawah */
+.benefit-hover-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+  border-radius: 4px 4px 0 0;
+  transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.benefit-card .benefit-icon {
+  font-size: 2.4rem;
+  color: var(--primary-maroon, #7a1a1a);
+  margin-bottom: 1rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+  display: inline-block;
+}
+
+.benefit-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark, #111);
+  transition: color 0.3s ease;
+}
+
+.benefit-card p {
+  color: var(--text-muted, #6c757d);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+/* ---- HOVER EFFECTS ---- */
+.benefit-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+  border-color: var(--primary-maroon, #7a1a1a);
+}
+
+.benefit-card:hover .benefit-hover-line {
+  width: 70%;
+}
+
+.benefit-card:hover .benefit-icon {
+  transform: scale(1.15) rotate(-4deg);
+  color: var(--secondary-gold, #c9a84c);
+}
+
+.benefit-card:hover h3 {
+  color: var(--primary-maroon, #7a1a1a);
+}
+
+.benefit-card:hover p {
+  color: var(--text-dark, #111);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .benefit-grid {
+    gap: 1.5rem;
+  }
+
+  .benefit-card {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+
+  .benefit-card .benefit-icon {
+    font-size: 2rem;
+  }
+
+  .benefit-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .benefit-card p {
+    font-size: 0.9rem;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-6px) scale(1.01);
+  }
+}
+
+@media (max-width: 480px) {
+  .benefit-card {
+    padding: 1.25rem 1rem 1.75rem;
+  }
+
+  .benefit-card .benefit-icon {
+    font-size: 1.8rem;
+  }
+
+  .benefit-card h3 {
+    font-size: 1rem;
+  }
+}
+
+/* ===== PRODUCT CARD ELEGANT - UNIFORM EFFECTS ===== */
+.product-card-elegant {
+    position: relative;
+    background: var(--bg-card, #ffffff);
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid var(--border-color, #e0e0e0);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-elegant .product-thumb {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-gray, #f8f9fa);
+}
+
+.product-card-elegant .product-thumb img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+}
+
+.product-card-elegant .product-body {
+    padding: 1.25rem 1.25rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-elegant .product-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark, #111);
+    margin-bottom: 0.25rem;
+    transition: color 0.3s ease;
+    line-height: 1.3;
+}
+
+.product-card-elegant .product-variant {
+    font-size: 0.8rem;
+    color: var(--text-muted, #6c757d);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.product-card-elegant .product-price-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+}
+
+.product-card-elegant .price-original {
+    font-size: 0.85rem;
+    color: var(--text-muted, #aaa);
+    text-decoration: line-through;
+}
+
+.product-card-elegant .price-sale {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-maroon, #7a1a1a);
+}
+
+.product-card-elegant .product-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.75rem;
+    color: var(--text-muted, #6c757d);
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.product-card-elegant .product-meta .rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.product-card-elegant .product-meta .rating i {
+    color: #f5b342;
+    font-size: 0.7rem;
+}
+
+.product-card-elegant .product-meta .rating span {
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.product-card-elegant .product-meta .sold {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.product-card-elegant .product-meta .sold i {
+    font-size: 0.7rem;
+    color: var(--primary-maroon, #7a1a1a);
+}
+
+.product-card-elegant .btn-detail {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: var(--primary-maroon, #7a1a1a);
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.product-card-elegant .btn-detail i {
+    font-size: 0.85rem;
+}
+
+.product-card-elegant .btn-detail:hover {
+    background: var(--dark-maroon, #4f0f0f);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
+}
+
+/* Garis aksen bawah */
+.product-card-elegant .product-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+    border-radius: 4px 4px 0 0;
+    transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+}
+
+/* ---- HOVER EFFECTS ---- */
+.product-card-elegant:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+    border-color: var(--primary-maroon, #7a1a1a);
+}
+
+.product-card-elegant:hover .product-hover-line {
+    width: 70%;
+}
+
+.product-card-elegant:hover .product-thumb img {
+    transform: scale(1.05);
+}
+
+.product-card-elegant:hover .product-title {
+    color: var(--primary-maroon, #7a1a1a);
+}
+
+.product-card-elegant:hover .product-variant {
+    color: var(--text-dark, #111);
+}
+
+/* Badge diskon tetap terlihat */
+.product-card-elegant .badge-discount {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--primary-maroon, #7a1a1a);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    border-radius: 50px;
+    z-index: 3;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(122, 26, 26, 0.35);
+}
+
+.product-card-elegant .badge-discount::after {
+    content: " OFF";
+    font-weight: 400;
+    font-size: 0.6rem;
+    opacity: 0.85;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .product-card-elegant .product-body {
+        padding: 1rem 1rem 1.25rem;
+    }
+    .product-card-elegant .product-title {
+        font-size: 0.9rem;
+    }
+    .product-card-elegant .price-sale {
+        font-size: 1rem;
+    }
+    .product-card-elegant .btn-detail {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+    .product-card-elegant:hover {
+        transform: translateY(-6px) scale(1.01);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card-elegant .product-body {
+        padding: 0.75rem 0.75rem 1rem;
+    }
+    .product-card-elegant .product-title {
+        font-size: 0.85rem;
+    }
+    .product-card-elegant .price-sale {
+        font-size: 0.95rem;
+    }
+    .product-card-elegant .product-meta {
+        font-size: 0.65rem;
+        gap: 0.5rem;
+    }
+    .product-card-elegant .btn-detail {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+

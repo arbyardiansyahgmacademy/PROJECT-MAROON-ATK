@@ -20,8 +20,156 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
 
-    <!-- penyesuaian kecil agar tombol Beli Sekarang full-width -->
     <style>
+        /* ===== HERO FEATURES GRID (SAMA DENGAN TENTANG-KAMI) ===== */
+        .hero-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .hero-feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 0.9rem 0.9rem;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-align: left;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .hero-feature-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* ===== CARD EFFECTS UNIFORM ===== */
+        .product-card-elegant {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+            border-radius: var(--radius-md, 12px);
+            background: var(--bg-card, #ffffff);
+            border: 1px solid var(--border-color, #e0e0e0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .product-card-elegant .product-hover-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+            border-radius: 4px 4px 0 0;
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
+        }
+
+        .product-card-elegant:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+            border-color: var(--primary-maroon, #7a1a1a);
+        }
+
+        .product-card-elegant:hover .product-hover-line {
+            width: 70%;
+        }
+
+        .product-card-elegant .product-thumb img {
+            transition: transform 0.5s ease;
+        }
+
+        .product-card-elegant:hover .product-thumb img {
+            transform: scale(1.03);
+        }
+
+        /* --- Category Card --- */
+        .category-card {
+            position: relative;
+            background: var(--bg-card, #ffffff);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            border: 1px solid var(--border-color, #e0e0e0);
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            display: block;
+            color: var(--text-dark, #111);
+        }
+
+        .category-card .category-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--maroon-soft, #f5e6e6);
+            color: var(--primary-maroon, #7a1a1a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem auto;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .category-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark, #111);
+            transition: color 0.3s ease;
+        }
+
+        .category-card p {
+            color: var(--text-muted, #6c757d);
+            font-size: 0.9rem;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        .category-card .category-hover-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+            border-radius: 4px 4px 0 0;
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+            border-color: var(--primary-maroon, #7a1a1a);
+        }
+
+        .category-card:hover .category-hover-line {
+            width: 70%;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.15) rotate(-4deg);
+            background-color: var(--primary-maroon, #7a1a1a);
+            color: #ffffff;
+        }
+
+        .category-card:hover h3 {
+            color: var(--primary-maroon, #7a1a1a);
+        }
+
+        .category-card:hover p {
+            color: var(--text-dark, #111);
+        }
+
         .product-card-elegant .product-actions {
             display: flex;
             flex-wrap: wrap;
@@ -97,10 +245,46 @@
             font-size: 0.7rem;
             color: var(--primary-maroon, #7a1a1a);
         }
-        @media (max-width: 576px) {
+
+        @media (max-width: 768px) {
+            .product-card-elegant:hover {
+                transform: translateY(-6px) scale(1.01);
+            }
+            .category-card {
+                padding: 1.5rem 1rem;
+            }
+            .category-card .category-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            .category-card:hover {
+                transform: translateY(-6px) scale(1.01);
+            }
+            .hero-features-grid {
+                grid-template-columns: 1fr;
+                gap: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-card {
+                padding: 1.25rem 0.75rem;
+            }
+            .category-card .category-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+            .category-card h3 {
+                font-size: 0.95rem;
+            }
             .product-price-box {
                 flex-direction: column;
                 align-items: stretch;
+            }
+            .hero-feature-card {
+                padding: 0.7rem 0.7rem;
             }
         }
     </style>
@@ -119,40 +303,41 @@
 <body>
 
     <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
-                <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;">
-                <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
-            </a>
-            <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
-                <li class="nav-item"><a href="tentang-kami.html" class="nav-link">Tentang Kami</a></li>
-                <li class="nav-item nav-item-dropdown">
-                    <span class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></span>
-                    <div class="dropdown-menu">
-                        <a href="produk/atk.html" class="dropdown-item"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
-                        <a href="produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
-                        <a href="produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
-                        <a href="produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
-                        <a href="produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
-                        <a href="produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
-                        <a href="produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
-                        <a href="produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="paket.html" class="nav-link">Paket</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="kontak.html" class="nav-link">Kontak</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi" target="_blank" class="btn btn-whatsapp btn-sm">
-                    <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
-                </a>
-            </div>
+<nav class="navbar">
+  <div class="container navbar-container">
+    <a href="../index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;" />
+      <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="../tentang-kami.html" class="nav-link">Tentang Kami</a></li>
+      <li class="nav-item nav-item-dropdown">
+        <!-- Mengubah <span> menjadi <a> dan menambahkan href="../produk.html" -->
+        <a href="../produk.html" class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></a>
+        <div class="dropdown-menu">
+          <a href="../produk/atk.html" class="dropdown-item active"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
+          <a href="../produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
+          <a href="../produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
+          <a href="../produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
+          <a href="../produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
+          <a href="../produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
+          <a href="../produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
+          <a href="../produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
         </div>
-    </nav>
+      </li>
+      <li class="nav-item"><a href="../paket.html" class="nav-link">Paket</a></li>
+      <li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="../kontak.html" class="nav-link">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20ATK" target="_blank" class="btn btn-whatsapp btn-sm">
+        <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
+      </a>
+    </div>
+  </div>
+</nav>
 
     <!-- ===== BREADCRUMB ===== -->
     <div class="breadcrumb-container">
@@ -165,19 +350,167 @@
         </div>
     </div>
 
-    <!-- ===== HERO KATALOG ===== -->
-    <section class="section section-bg-light" style="padding: 3rem 0;">
-        <div class="container text-center" style="max-width:800px;margin:0 auto;">
-            <span class="badge-tag" style="background-color:var(--maroon-soft);color:var(--primary-maroon);padding:0.35rem 1rem;border-radius:var(--radius-pill);font-size:0.85rem;font-weight:600;border:1px solid var(--maroon-border);">KATALOG PERALATAN KANTOR</span>
-            <h1 style="margin-top:0.75rem;margin-bottom:1rem;">Produk & Solusi Peralatan Kantor</h1>
-            <p style="color:var(--text-muted);font-size:1.05rem;">
-                Pilihan lengkap ATK, Meja, Kursi, Lemari Arsip, Videotron, dan Smart Display untuk Instansi Pemerintah, Kampus, Sekolah, dan Swasta.
+    <!-- ===== HERO PRODUK - RAMPI (DIKURANGI TINGGINYA) ===== -->
+    <section style="
+        background: linear-gradient(135deg, #7a1a1a 0%, #4a0f0f 100%);
+        padding: 3rem 0 3.5rem;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        position: relative;
+        overflow: hidden;
+    ">
+        <div class="container" style="
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        ">
+            <!-- Badge / Tag dengan Icon -->
+            <span style="
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: rgba(255, 255, 255, 0.12);
+                color: #ffffff;
+                padding: 0.35rem 1.1rem;
+                border-radius: 50px;
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                margin-bottom: 1rem;
+                backdrop-filter: blur(4px);
+            ">
+                <i class="fas fa-box" style="color: #c9a84c;"></i> KATALOG PRODUK
+            </span>
+
+            <!-- Title -->
+            <h1 style="
+                font-size: clamp(1.8rem, 4vw, 2.8rem);
+                font-weight: 800;
+                color: #ffffff;
+                margin: 0 0 0.5rem 0;
+                line-height: 1.15;
+                letter-spacing: -0.02em;
+            ">Katalog & Solusi Peralatan Kantor</h1>
+
+            <!-- Description -->
+            <p style="
+                font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+                color: rgba(255, 255, 255, 0.9);
+                max-width: 700px;
+                margin: 0 auto 1.5rem;
+                line-height: 1.6;
+                font-weight: 400;
+            ">
+                Pilihan lengkap Alat Tulis Kantor, Furniture, Videotron, dan Smart Interactive Board untuk kebutuhan instansi pemerintah, pendidikan, dan perusahaan swasta.
             </p>
 
-            <!-- Search & Filter -->
-            <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;max-width:650px;margin-left:auto;margin-right:auto;">
-                <input type="text" id="productSearchInput" placeholder="Cari nama produk kantor..." style="flex:1;min-width:220px;padding:0.75rem 1rem;border:1px solid var(--border-color);border-radius:var(--radius-md);font-size:0.95rem;" />
-                <select id="productCategoryFilter" style="padding:0.75rem 1rem;border:1px solid var(--border-color);border-radius:var(--radius-md);font-size:0.95rem;background:#fff;cursor:pointer;">
+            <!-- Grid Icon Layanan Utama Hero (dengan ukuran lebih ringkas) -->
+            <div class="hero-features-grid">
+                <!-- Item 1: ATK -->
+                <div class="hero-feature-card">
+                    <div style="
+                        width: 38px;
+                        height: 38px;
+                        border-radius: 8px;
+                        background: rgba(201, 168, 76, 0.2);
+                        color: #c9a84c;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1rem;
+                        flex-shrink: 0;
+                    ">
+                        <i class="fas fa-pen-ruler"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Alat Tulis Kantor</h4>
+                        <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Lengkap & Berkualitas</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Office Furniture -->
+                <div class="hero-feature-card">
+                    <div style="
+                        width: 38px;
+                        height: 38px;
+                        border-radius: 8px;
+                        background: rgba(201, 168, 76, 0.2);
+                        color: #c9a84c;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1rem;
+                        flex-shrink: 0;
+                    ">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Furniture Kantor</h4>
+                        <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Meja, Kursi & Lemari</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Teknologi Kantor -->
+                <div class="hero-feature-card">
+                    <div style="
+                        width: 38px;
+                        height: 38px;
+                        border-radius: 8px;
+                        background: rgba(201, 168, 76, 0.2);
+                        color: #c9a84c;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1rem;
+                        flex-shrink: 0;
+                    ">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Teknologi Kantor</h4>
+                        <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Videotron & IFP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements (lebih kecil agar tidak terlalu menonjol) -->
+        <div style="
+            position: absolute;
+            top: -20%;
+            right: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        "></div>
+        <div style="
+            position: absolute;
+            bottom: -15%;
+            left: -3%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        "></div>
+    </section>
+
+    <!-- ===== SEARCH & FILTER ===== -->
+    <section class="section" style="padding: 1.5rem 0 0.5rem;">
+        <div class="container" style="max-width:650px; margin:0 auto;">
+            <div style="display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;">
+                <input type="text" id="productSearchInput" placeholder="Cari nama produk kantor..." style="flex:1;min-width:200px;padding:0.6rem 1rem;border:1px solid var(--border-color);border-radius:var(--radius-md);font-size:0.9rem;" />
+                <select id="productCategoryFilter" style="padding:0.6rem 1rem;border:1px solid var(--border-color);border-radius:var(--radius-md);font-size:0.9rem;background:#fff;cursor:pointer;">
                     <option value="all">Seluruh Kategori</option>
                     <option value="atk">Alat Tulis Kantor</option>
                     <option value="meja">Meja Kantor</option>
@@ -197,19 +530,59 @@
         <div class="container">
             <h2 style="font-size:1.35rem;margin-bottom:1.5rem;border-left:4px solid var(--primary-maroon);padding-left:0.75rem;">Pilih Berdasarkan Kategori Spesifik</h2>
             <div class="category-grid">
-                <a href="produk/atk.html" class="category-card"><div class="category-icon"><i class="fas fa-pen-nib"></i></div><h3>Alat Tulis Kantor</h3><p>Kertas, Pen, Odner</p></a>
-                <a href="produk/meja-kantor.html" class="category-card"><div class="category-icon"><i class="fas fa-table"></i></div><h3>Meja Kantor</h3><p>Direktur, Staf, Rapat</p></a>
-                <a href="produk/kursi-kantor.html" class="category-card"><div class="category-icon"><i class="fas fa-chair"></i></div><h3>Kursi Kantor</h3><p>Ergonomis & Hidrolik</p></a>
-                <a href="produk/lemari-arsip.html" class="category-card"><div class="category-icon"><i class="fas fa-archive"></i></div><h3>Lemari Arsip</h3><p>Filing Cabinet Besi</p></a>
-                <a href="produk/furniture-kantor.html" class="category-card"><div class="category-icon"><i class="fas fa-couch"></i></div><h3>Furniture Kantor</h3><p>Sofa, Partisi, Reception</p></a>
-                <a href="produk/videotron.html" class="category-card"><div class="category-icon"><i class="fas fa-tv"></i></div><h3>Videotron</h3><p>LED Indoor & Outdoor</p></a>
-                <a href="produk/interactive-flat-panel.html" class="category-card"><div class="category-icon"><i class="fas fa-chalkboard-teacher"></i></div><h3>Interactive Panel</h3><p>Smart Board 65" - 86"</p></a>
-                <a href="produk/papan-tulis-digital.html" class="category-card"><div class="category-icon"><i class="fas fa-digital-tachograph"></i></div><h3>Papan Digital</h3><p>Digital Whiteboard</p></a>
+                <a href="produk/atk.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-pen-nib"></i></div>
+                    <h3>Alat Tulis Kantor</h3>
+                    <p>Kertas, Pen, Odner</p>
+                    <div class="category-hover-line"></div>
+                </a>
+                <a href="produk/meja-kantor.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-table"></i></div>
+                    <h3>Meja Kantor</h3>
+                    <p>Direktur, Staf, Rapat</p>
+                    <div class="category-hover-line"></div>
+                </a>
+                <a href="produk/kursi-kantor.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-chair"></i></div>
+                    <h3>Kursi Kantor</h3>
+                    <p>Ergonomis & Hidrolik</p>
+                    <div class="category-hover-line"></div>
+                </a>
+                <a href="produk/lemari-arsip.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-archive"></i></div>
+                    <h3>Lemari Arsip</h3>
+                    <p>Filing Cabinet Besi</p>
+                    <div class="category-hover-line"></div>
+                </a>
+                <a href="produk/furniture-kantor.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-couch"></i></div>
+                    <h3>Furniture Kantor</h3>
+                    <p>Sofa, Partisi, Reception</p>
+                    <div class="category-hover-line"></div>
+                </a>
+                <a href="produk/videotron.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-tv"></i></div>
+                    <h3>Videotron</h3>
+                    <p>LED Indoor & Outdoor</p>
+                    <div class="category-hover-line"></div>
+                </a>
+                <a href="produk/interactive-flat-panel.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>Interactive Panel</h3>
+                    <p>Smart Board 65" - 86"</p>
+                    <div class="category-hover-line"></div>
+                </a>
+                <a href="produk/papan-tulis-digital.html" class="category-card">
+                    <div class="category-icon"><i class="fas fa-digital-tachograph"></i></div>
+                    <h3>Papan Digital</h3>
+                    <p>Digital Whiteboard</p>
+                    <div class="category-hover-line"></div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== PRODUCT GRID (Filterable) ===== -->
+    <!-- ===== PRODUCT GRID ===== -->
     <section class="section">
         <div class="container">
             <h2 style="font-size:1.35rem;margin-bottom:1.5rem;border-left:4px solid var(--primary-maroon);padding-left:0.75rem;">Daftar Produk Pilihan</h2>
@@ -239,6 +612,7 @@
                             <a href="detail/kertas-hvs-a4-f4.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- ====== PRODUCT 2 ====== -->
@@ -264,6 +638,7 @@
                             <a href="detail/meja-kerja-staf-m-120.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- ====== PRODUCT 3 ====== -->
@@ -289,6 +664,7 @@
                             <a href="detail/kursi-direktur-executive-k-80.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- ====== PRODUCT 4 ====== -->
@@ -314,6 +690,7 @@
                             <a href="detail/lemari-arsip-besi-pintu-geser-kaca-l-180.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- ====== PRODUCT 5 ====== -->
@@ -339,6 +716,7 @@
                             <a href="detail/videotron-led-indoor-p2.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- ====== PRODUCT 6 ====== -->
@@ -364,6 +742,7 @@
                             <a href="detail/interactive-flat-panel-65-inch-4k.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- ====== PRODUCT 7 ====== -->
@@ -389,6 +768,7 @@
                             <a href="detail/digital-whiteboard-55-inch-portable.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- ====== PRODUCT 8 ====== -->
@@ -414,6 +794,7 @@
                             <a href="detail/set-sofa-tamu-kantor-leather-3-1-1.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                         </div>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
             </div><!-- /product-grid-elegant -->
@@ -476,7 +857,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <div>&copy; 2026 MAROON ATK. All Rights Reserved.  </div>
+                <div>&copy; 2026 MAROON ATK. All Rights Reserved.</div>
             </div>
         </div>
     </footer>

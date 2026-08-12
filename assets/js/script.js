@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         const currentScrollY = window.scrollY;
 
-        // Tambah class 'scrolled' jika scroll > 50px
         if (currentScrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.addEventListener('click', function(e) {
             e.stopPropagation();
             navMenu.classList.toggle('open');
-            // Ubah icon hamburger
             const icon = this.querySelector('i');
             if (icon) {
                 icon.classList.toggle('fa-bars');
@@ -54,31 +52,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Tutup menu saat link diklik (mobile) - KECUALI dropdown toggle
-const navLinks = navMenu.querySelectorAll('.nav-link');
-navLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-        // Jangan tutup menu jika yang diklik adalah dropdown toggle
-        if (this.classList.contains('dropdown-toggle')) {
-            return; // Biarkan dropdown toggle berfungsi tanpa menutup menu
-        }
-        navMenu.classList.remove('open');
-        const icon = hamburger.querySelector('i');
-        if (icon) {
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
-        }
-    });
-});
+        // Tutup menu saat link diklik (kecuali dropdown toggle)
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                if (this.classList.contains('dropdown-toggle')) {
+                    return; // biarkan dropdown toggle bekerja
+                }
+                navMenu.classList.remove('open');
+                const icon = hamburger.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
     }
 
     // ==========================================
-    // 3. DROPDOWN NAVIGATION (Mobile)
+    // 3. DROPDOWN NAVIGATION (Mobile & Desktop)
     // ==========================================
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     dropdownToggles.forEach(function(toggle) {
         toggle.addEventListener('click', function(e) {
-            e.preventDefault();
+            // Di mobile: toggle dropdown
+            // Di desktop: tetap toggel juga (agar konsisten untuk touch)
+            e.preventDefault(); // cegah navigasi
             const parent = this.closest('.nav-item-dropdown');
             if (parent) {
                 parent.classList.toggle('open');
@@ -121,6 +120,10 @@ navLinks.forEach(function(link) {
         if (link.getAttribute('href') === '#') return;
         if (link.getAttribute('href') === '') return;
 
+        // ===== PERBAIKAN: Lewati link dropdown toggle =====
+        if (link.classList.contains('dropdown-toggle')) return;
+        // Jika ada kemungkinan link di dalam dropdown (tapi bukan toggle) biarkan
+
         link.addEventListener('click', function(e) {
             // Cegah jika sedang menekan Ctrl/Cmd untuk buka tab baru
             if (e.ctrlKey || e.metaKey) return;
@@ -137,7 +140,7 @@ navLinks.forEach(function(link) {
             // Setelah transisi, arahkan ke halaman tujuan
             setTimeout(function() {
                 window.location.href = href;
-            }, 400); // Durasi sama dengan CSS transition
+            }, 400);
         });
     });
 
@@ -163,7 +166,6 @@ navLinks.forEach(function(link) {
                     }
                 });
 
-                // Toggle active pada item ini
                 if (isActive) {
                     item.classList.remove('active');
                 } else {
@@ -177,7 +179,6 @@ navLinks.forEach(function(link) {
     // 7. ABOUT SLIDER (Otomatis dari HTML)
     // ==========================================
     // Slider sudah dijalankan dari script inline di index.html
-    // Tidak perlu tambahan lagi
 
     console.log('MAROON ATK - Website loaded successfully.');
 });

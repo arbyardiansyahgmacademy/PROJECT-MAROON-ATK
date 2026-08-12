@@ -6,43 +6,259 @@
   <title>Penyedia Interactive Flat Panel (IFP) Smart Board - MAROON ATK</title>
   <meta name="description" content="Pusat Interactive Flat Panel (IFP) Smart Board 65, 75, 86 inch 4K UHD: Layar Sentuh Interaktif Rapat & Pembelajaran Digital Dual OS Android & Windows." />
   <link rel="canonical" href="https://maroonatk.web.id/produk/interactive-flat-panel.html" />
-  <link rel="icon" href="../assets/image/favicon-maroon-atk.webp" type="image/webp">
+  <link rel="icon" href="../assets/image/favicon-maroon-atk.webp" type="image/webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://maroonatk.web.id/produk/interactive-flat-panel.html" />
+  <meta property="og:title" content="Interactive Flat Panel Smart Board 4K - MAROON ATK" />
+  <meta property="og:description" content="Layar sentuh interaktif 4K UHD dengan multi-touch, dual OS, dan screen mirroring untuk ruang rapat & pendidikan digital." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
+
   <style>
-    .product-detail-btn, .product-thumb-link, .product-title-link, .product-price-box, .product-actions { /* sama seperti di atas */ }
-    .product-detail-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border: 1.5px solid var(--primary-maroon, #7a1a1a); border-radius: var(--radius-md, 8px); background: transparent; color: var(--primary-maroon, #7a1a1a); font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.25s ease; text-decoration: none; font-family: inherit; }
-    .product-detail-btn:hover { background: var(--primary-maroon, #7a1a1a); color: #fff; border-color: var(--primary-maroon, #7a1a1a); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(122, 26, 26, 0.25); }
-    .product-thumb-link { display: block; overflow: hidden; border-radius: var(--radius-md, 8px) var(--radius-md, 8px) 0 0; transition: opacity 0.25s ease; }
-    .product-thumb-link:hover { opacity: 0.88; }
-    .product-thumb-link img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
-    .product-thumb-link:hover img { transform: scale(1.03); }
-    .product-title-link { text-decoration: none; color: inherit; transition: color 0.2s ease; }
-    .product-title-link:hover { color: var(--primary-maroon, #7a1a1a); }
-    .product-price-box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem; margin-top: 0.35rem; }
-    .product-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-    .product-actions .btn-whatsapp { white-space: nowrap; font-size: 0.8rem; padding: 0.45rem 0.9rem; }
-    @media (max-width: 576px) { .product-price-box { flex-direction: column; align-items: stretch; } .product-actions { justify-content: stretch; } .product-actions .btn-whatsapp, .product-actions .product-detail-btn { flex: 1; justify-content: center; } }
+    /* ===== HERO FEATURES GRID (SAMA DENGAN PRODUK.HTML) ===== */
+    .hero-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .hero-feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 0.9rem 0.9rem;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-align: left;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .hero-feature-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* ===== CARD EFFECTS UNIFORM ===== */
+    .product-card-elegant {
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
+      border-radius: var(--radius-md, 12px);
+      background: var(--bg-card, #ffffff);
+      border: 1px solid var(--border-color, #e0e0e0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .product-card-elegant .product-hover-line {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+      border-radius: 4px 4px 0 0;
+      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: 2;
+    }
+    .product-card-elegant:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+      border-color: var(--primary-maroon, #7a1a1a);
+    }
+    .product-card-elegant:hover .product-hover-line {
+      width: 70%;
+    }
+    .product-card-elegant .product-thumb img {
+      transition: transform 0.5s ease;
+    }
+    .product-card-elegant:hover .product-thumb img {
+      transform: scale(1.03);
+    }
+
+    /* ===== PRODUCT THUMB & BADGE ===== */
+    .product-thumb {
+      position: relative;
+      overflow: hidden;
+      background: #f8f8f8;
+    }
+    .product-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .badge-discount {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--primary-maroon, #7a1a1a);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      z-index: 1;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== PRODUCT BODY ===== */
+    .product-body {
+      padding: 1rem 1rem 1.2rem;
+    }
+    .product-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-dark, #111);
+      margin: 0 0 0.15rem;
+      line-height: 1.3;
+    }
+    .product-variant {
+      font-size: 0.8rem;
+      color: var(--text-muted, #6c757d);
+      margin-bottom: 0.4rem;
+    }
+    .product-price-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.7rem;
+      margin-bottom: 0.3rem;
+    }
+    .product-price-box .price-original {
+      font-size: 0.85rem;
+      color: var(--text-muted, #aaa);
+      text-decoration: line-through;
+    }
+    .product-price-box .price-sale {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-maroon, #7a1a1a);
+    }
+    .product-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.75rem;
+      color: var(--text-muted, #6c757d);
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .product-meta .rating {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .product-meta .rating i {
+      color: #f5b342;
+      font-size: 0.7rem;
+    }
+    .product-meta .rating span {
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+    .product-meta .sold {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .product-meta .sold i {
+      font-size: 0.7rem;
+      color: var(--primary-maroon, #7a1a1a);
+    }
+
+    /* ===== BUTTON ACTION (SATU TOMBOL) ===== */
+    .product-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .product-actions .btn-detail {
+      flex: 1;
+      justify-content: center;
+      min-width: 100%;
+      background: var(--primary-maroon, #7a1a1a);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .product-actions .btn-detail:hover {
+      background: var(--dark-maroon, #4a0f0f);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(128, 0, 32, 0.3);
+    }
+
+    /* ===== GRID ===== */
+    .product-grid-elegant {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.8rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .product-card-elegant:hover {
+        transform: translateY(-6px) scale(1.01);
+      }
+      .hero-features-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .product-price-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .product-actions .btn-detail {
+        min-width: 100%;
+      }
+      .hero-feature-card {
+        padding: 0.7rem 0.7rem;
+      }
+    }
   </style>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://maroonatk.web.id/" },
+        { "@type": "ListItem", "position": 2, "name": "Produk", "item": "https://maroonatk.web.id/produk.html" },
+        { "@type": "ListItem", "position": 3, "name": "Interactive Flat Panel", "item": "https://maroonatk.web.id/produk/interactive-flat-panel.html" }
+      ]
+    }
+  </script>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
     <div class="container navbar-container">
-      <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
-  <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;">
-  <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
-</a>
+      <a href="../index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;" />
+        <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
+      </a>
       <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
       <ul class="nav-menu">
         <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
         <li class="nav-item"><a href="../tentang-kami.html" class="nav-link">Tentang Kami</a></li>
         <li class="nav-item nav-item-dropdown">
-          <span class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></span>
+          <a href="../produk.html" class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></a>
           <div class="dropdown-menu">
             <a href="../produk/atk.html" class="dropdown-item"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
             <a href="../produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
@@ -59,12 +275,14 @@
         <li class="nav-item"><a href="../kontak.html" class="nav-link">Kontak</a></li>
       </ul>
       <div class="nav-actions">
-        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20Interactive%20Flat%20Panel" target="_blank" class="btn btn-whatsapp btn-sm"><i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span></a>
+        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20ATK" target="_blank" class="btn btn-whatsapp btn-sm">
+          <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
+        </a>
       </div>
     </div>
   </nav>
 
-  <!-- Breadcrumb -->
+  <!-- ===== BREADCRUMB ===== -->
   <div class="breadcrumb-container">
     <div class="container">
       <ul class="breadcrumb-list">
@@ -77,138 +295,332 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="section section-bg-light" style="padding: 3.5rem 0;">
-    <div class="container text-center" style="max-width: 820px; margin: 0 auto;">
-      <span class="badge-tag" style="background-color: var(--maroon-soft); color: var(--primary-maroon); padding: 0.35rem 1rem; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600; border: 1px solid var(--maroon-border);">TEKNOLOGI INTERAKTIF RAPAT</span>
-      <h1 style="margin-top: 0.75rem; margin-bottom: 1rem;">Interactive Flat Panel (IFP) Smart Board</h1>
-      <p style="color: var(--text-muted); font-size: 1.05rem;">Papan tulis digital interaktif 4K UHD dengan multi-touch 20 titik, dual OS (Android & Windows OPS), penulisan halus, serta screen mirroring nirkabel untuk ruang rapat & ruang kelas digital.</p>
+  <!-- ===== HERO KATEGORI - GRADASI MAROON ===== -->
+  <section style="
+    background: linear-gradient(135deg, #7a1a1a 0%, #4a0f0f 100%);
+    padding: 3rem 0 3.5rem;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+  ">
+    <div class="container" style="
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    ">
+      <!-- Badge -->
+      <span style="
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        padding: 0.35rem 1.1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 1rem;
+        backdrop-filter: blur(4px);
+      ">
+        <i class="fas fa-chalkboard-teacher" style="color: #c9a84c;"></i> TEKNOLOGI INTERAKTIF RAPAT
+      </span>
+
+      <!-- Title -->
+      <h1 style="
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      ">Interactive Flat Panel (IFP) Smart Board 4K</h1>
+
+      <!-- Deskripsi -->
+      <p style="
+        font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 700px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+        font-weight: 400;
+      ">
+        Papan tulis digital interaktif 4K UHD dengan multi-touch 20 titik, dual OS (Android & Windows OPS), penulisan halus, serta screen mirroring nirkabel untuk ruang rapat & ruang kelas digital.
+      </p>
+
+      <!-- Grid Fitur Hero -->
+      <div class="hero-features-grid">
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px; height: 38px; border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+          ">
+            <i class="fas fa-expand"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Ukuran 65" – 86"</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Sesuai Kebutuhan Ruang</p>
+          </div>
+        </div>
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px; height: 38px; border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+          ">
+            <i class="fas fa-hand-pointer"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Multi-Touch 20 Titik</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Interaktif & Kolaboratif</p>
+          </div>
+        </div>
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px; height: 38px; border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+          ">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Dual OS</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Android + Windows OPS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dekorasi -->
+    <div style="
+      position: absolute; top: -20%; right: -5%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%; pointer-events: none; z-index: 1;
+    "></div>
+    <div style="
+      position: absolute; bottom: -15%; left: -3%;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%; pointer-events: none; z-index: 1;
+    "></div>
+  </section>
+
+  <!-- ===== PRODUCT GRID INTERACTIVE FLAT PANEL ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 style="font-size:1.35rem; margin-bottom:1.5rem; border-left:4px solid var(--primary-maroon); padding-left:0.75rem;">Pilihan Interactive Flat Panel Berkualitas</h2>
+
+      <div class="product-grid-elegant">
+
+        <!-- ===== PRODUK 1: IFP 65" ===== -->
+        <div class="product-card-elegant">
+          <div class="product-thumb">
+            <span class="badge-discount">15%</span>
+            <a href="../detail/interactive-flat-panel-65-inch-4k.html" aria-label="Detail IFP 65 Inch">
+              <img src="../assets/image/SMARTBOARD/Interactif-Panel-Smart-Board-SLIDE-6.webp" alt="Interactive Flat Panel 65 Inch 4K" loading="lazy" />
+            </a>
+          </div>
+          <div class="product-body">
+            <div class="product-title">Interactive Flat Panel Smart Board 65" 4K UHD</div>
+            <div class="product-variant">20-point Touch – Dual OS</div>
+            <div class="product-price-box">
+              <span class="price-original">Rp22.000.000</span>
+              <span class="price-sale">Rp18.700.000</span>
+            </div>
+            <div class="product-meta">
+              <span class="rating"><i class="fas fa-star"></i> <span>4.9</span> (48 ulasan)</span>
+              <span class="sold"><i class="fas fa-shopping-bag"></i> 210 terjual</span>
+            </div>
+            <div class="product-actions">
+              <a href="../detail/interactive-flat-panel-65-inch-4k.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="product-hover-line"></div>
+        </div>
+
+        <!-- ===== PRODUK 2: IFP 75" ===== -->
+        <div class="product-card-elegant">
+          <div class="product-thumb">
+            <span class="badge-discount">18%</span>
+            <a href="../detail/interactive-flat-panel-65-inch-4k.html" aria-label="Detail IFP 75 Inch">
+              <img src="../assets/image/SMARTBOARD/Interactif-Panel-Smart-Board-SLIDE-5.webp" alt="Interactive Flat Panel 75 Inch 4K" loading="lazy" />
+            </a>
+          </div>
+          <div class="product-body">
+            <div class="product-title">Interactive Flat Panel Smart Board 75" 4K UHD</div>
+            <div class="product-variant">Kamera 4K 13MP – Dual OS</div>
+            <div class="product-price-box">
+              <span class="price-original">Rp32.500.000</span>
+              <span class="price-sale">Rp26.650.000</span>
+            </div>
+            <div class="product-meta">
+              <span class="rating"><i class="fas fa-star"></i> <span>4.8</span> (36 ulasan)</span>
+              <span class="sold"><i class="fas fa-shopping-bag"></i> 156 terjual</span>
+            </div>
+            <div class="product-actions">
+              <a href="../detail/interactive-flat-panel-65-inch-4k.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="product-hover-line"></div>
+        </div>
+
+        <!-- ===== PRODUK 3: IFP 86" ===== -->
+        <div class="product-card-elegant">
+          <div class="product-thumb">
+            <span class="badge-discount">20%</span>
+            <a href="../detail/interactive-flat-panel-65-inch-4k.html" aria-label="Detail IFP 86 Inch">
+              <img src="../assets/image/SMARTBOARD/Interactif-Panel-Smart-Board-SLIDE-4.webp" alt="Interactive Flat Panel 86 Inch 4K" loading="lazy" />
+            </a>
+          </div>
+          <div class="product-body">
+            <div class="product-title">Interactive Flat Panel Smart Board 86" 4K UHD</div>
+            <div class="product-variant">Anti-Glare – Speaker 2x15W</div>
+            <div class="product-price-box">
+              <span class="price-original">Rp46.000.000</span>
+              <span class="price-sale">Rp36.800.000</span>
+            </div>
+            <div class="product-meta">
+              <span class="rating"><i class="fas fa-star"></i> <span>4.7</span> (22 ulasan)</span>
+              <span class="sold"><i class="fas fa-shopping-bag"></i> 89 terjual</span>
+            </div>
+            <div class="product-actions">
+              <a href="../detail/interactive-flat-panel-65-inch-4k.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="product-hover-line"></div>
+        </div>
+
+        <!-- ===== PRODUK 4: IFP 65" Mobile Stand ===== -->
+        <div class="product-card-elegant">
+          <div class="product-thumb">
+            <span class="badge-discount">12%</span>
+            <a href="../detail/interactive-flat-panel-65-inch-4k.html" aria-label="Detail IFP 65 Inch dengan Mobile Stand">
+              <img src="../assets/image/SMARTBOARD/Interactif-Panel-Smart-Board-SLIDE-3.webp" alt="IFP 65 Inch dengan Mobile Stand" loading="lazy" />
+            </a>
+          </div>
+          <div class="product-body">
+            <div class="product-title">IFP 65" + Mobile Stand Portable</div>
+            <div class="product-variant">Roda Kunci – Tinggi Adjustable</div>
+            <div class="product-price-box">
+              <span class="price-original">Rp25.500.000</span>
+              <span class="price-sale">Rp22.440.000</span>
+            </div>
+            <div class="product-meta">
+              <span class="rating"><i class="fas fa-star"></i> <span>4.6</span> (18 ulasan)</span>
+              <span class="sold"><i class="fas fa-shopping-bag"></i> 67 terjual</span>
+            </div>
+            <div class="product-actions">
+              <a href="../detail/interactive-flat-panel-65-inch-4k.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
+            </div>
+          </div>
+          <div class="product-hover-line"></div>
+        </div>
+
+      </div><!-- /product-grid-elegant -->
     </div>
   </section>
 
-  <!-- Grid IFP -->
-  <section class="section">
-    <div class="container">
-      <div class="product-grid">
-
-        <!-- Produk 1: IFP 65" -->
-        <div class="product-card">
-          <span class="product-badge">Ruang Rapat Standard</span>
-          <a href="../produk-detail.html?id=15" class="product-thumb-link" aria-label="Detail IFP 65 Inch">
-            <div class="product-thumb">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Interactive Flat Panel 65 Inch 4K" width="600" height="400" loading="lazy" />
-            </div>
-          </a>
-          <div class="product-body">
-            <div class="product-category">Interactive Display</div>
-            <h3 class="product-title"><a href="../produk-detail.html?id=15" class="product-title-link">Interactive Flat Panel Smart Board 65" 4K UHD</a></h3>
-            <p class="product-desc">Ukuran ideal ruang rapat medium & kelas digital. Dilengkapi tempered glass anti silau & stylus pen ganda.</p>
-            <div class="product-price-box">
-              <span class="price-text">Request Penawaran</span>
-              <div class="product-actions">
-                <a href="../produk-detail.html?id=15" class="product-detail-btn"><i class="fas fa-info-circle"></i> Detail</a>
-                <button class="btn btn-whatsapp btn-sm" data-wa-product="Interactive Flat Panel 65 Inch 4K UHD"><i class="fab fa-whatsapp"></i> Minta Harga</button>
-              </div>
-            </div>
-          </div>
+  <!-- ===== EDUKASI & FAQ IFP ===== -->
+  <section class="section section-bg-light">
+    <div class="container" style="max-width: 850px; margin: 0 auto;">
+      <h2 style="margin-bottom: 1rem;">Panduan Memilih Interactive Flat Panel</h2>
+      <p style="color: var(--text-muted); font-size: 1rem; margin-top:0.5rem; margin-bottom: 1.5rem;">
+        Interactive Flat Panel adalah solusi modern untuk presentasi dan kolaborasi. Pertimbangkan ukuran layar, jumlah titik sentuh, kecerahan, dan ketersediaan sistem operasi (Android/Windows) yang sesuai dengan kebutuhan ruang rapat atau kelas Anda.
+      </p>
+      <div class="faq-container" style="max-width: 100%;">
+        <div class="faq-item active">
+          <button class="faq-question"><span>Berapa ukuran IFP yang ideal untuk ruang rapat?</span><i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Untuk ruang rapat medium (10-15 orang), ukuran 65" sudah ideal. Untuk ruang yang lebih besar, pilih 75" atau 86" agar semua peserta dapat melihat dengan jelas.</p></div>
         </div>
-
-        <!-- Produk 2: IFP 75" -->
-        <div class="product-card">
-          <span class="product-badge">Favorite Executive</span>
-          <a href="../produk-detail.html?id=16" class="product-thumb-link" aria-label="Detail IFP 75 Inch">
-            <div class="product-thumb">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Interactive Flat Panel 75 Inch 4K" width="600" height="400" loading="lazy" />
-            </div>
-          </a>
-          <div class="product-body">
-            <div class="product-category">Interactive Display</div>
-            <h3 class="product-title"><a href="../produk-detail.html?id=16" class="product-title-link">Interactive Flat Panel Smart Board 75" 4K UHD</a></h3>
-            <p class="product-desc">Kapasitas tampilan luas untuk ruang rapat utama & auditorium kecil dengan kamera 4K 13MP terintegrasi.</p>
-            <div class="product-price-box">
-              <span class="price-text">Request Penawaran</span>
-              <div class="product-actions">
-                <a href="../produk-detail.html?id=16" class="product-detail-btn"><i class="fas fa-info-circle"></i> Detail</a>
-                <button class="btn btn-whatsapp btn-sm" data-wa-product="Interactive Flat Panel 75 Inch 4K UHD"><i class="fab fa-whatsapp"></i> Minta Harga</button>
-              </div>
-            </div>
-          </div>
+        <div class="faq-item">
+          <button class="faq-question"><span>Apakah IFP bisa digunakan tanpa koneksi internet?</span><i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Ya, IFP dapat digunakan secara offline untuk penulisan, anotasi, dan presentasi lokal. Fitur cloud dan mirroring membutuhkan jaringan untuk fungsionalitas penuh.</p></div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- CTA Banner -->
+  <!-- ===== CTA BANNER ===== -->
   <section class="section">
     <div class="container">
       <div class="cta-banner">
         <h2>Modernisasi Ruang Rapat & Ruang Kelas Anda Sekarang</h2>
         <p>Konsultasikan spesifikasi unit Interactive Flat Panel bersama tim teknis MAROON ATK untuk jadwal demo dan penawaran resmi.</p>
-        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20Interactive%20Flat%20Panel." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Konsultasi Interactive Display via WA</a>
+        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20Interactive%20Flat%20Panel." target="_blank" class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Konsultasi Interactive Display via WA
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
-                        <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;" />
-                        <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
-                    </a>
-                    <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Kategori Produk</h4>
-                    <ul class="footer-links">
-                        <li><a href="produk/atk.html">Alat Tulis Kantor (ATK)</a></li>
-                        <li><a href="produk/meja-kantor.html">Meja Kantor Executive & Staf</a></li>
-                        <li><a href="produk/kursi-kantor.html">Kursi Kerja Ergonomis</a></li>
-                        <li><a href="produk/lemari-arsip.html">Lemari Arsip & Filing Cabinet</a></li>
-                        <li><a href="produk/videotron.html">Videotron LED Indoor / Outdoor</a></li>
-                        <li><a href="produk/interactive-flat-panel.html">Interactive Flat Panel Smart Board</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigasi Situs</h4>
-                    <ul class="footer-links">
-                        <li><a href="tentang-kami.html">Tentang Kami</a></li>
-                        <li><a href="produk.html">Katalog Produk</a></li>
-                        <li><a href="paket.html">Paket Pengadaan</a></li>
-                        <li><a href="blog.html">Blog & Panduan Kantor</a></li>
-                        <li><a href="kontak.html">Kontak & Lokasi</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Hubungi Kami</h4>
-                    <ul class="footer-contact-list">
-                        <li><i class="fas fa-phone-alt"></i> 0889-8964-3555</li>
-                        <li><i class="fab fa-whatsapp"></i> 0889-8964-3555</li>
-                        <li><i class="fas fa-envelope"></i> info@maroonatk.web.id</li>
-                        <li><i class="fas fa-globe"></i> https://maroonatk.web.id/</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Layanan Pengadaan: Malang, Surabaya, Jakarta, Denpasar, Makassar & Seluruh Indonesia</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div>&copy; 2026 MAROON ATK. All Rights Reserved.<a href="https://maroonatk.web.id/" style="color:#ffffff;"></a></div>
-            </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
+            <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;" />
+            <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
+          </a>
+          <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
         </div>
-    </footer>
+        <div class="footer-col">
+          <h4>Kategori Produk</h4>
+          <ul class="footer-links">
+            <li><a href="../produk/atk.html">Alat Tulis Kantor (ATK)</a></li>
+            <li><a href="../produk/meja-kantor.html">Meja Kantor Executive & Staf</a></li>
+            <li><a href="../produk/kursi-kantor.html">Kursi Kerja Ergonomis</a></li>
+            <li><a href="../produk/lemari-arsip.html">Lemari Arsip & Filing Cabinet</a></li>
+            <li><a href="../produk/videotron.html">Videotron LED Indoor / Outdoor</a></li>
+            <li><a href="../produk/interactive-flat-panel.html">Interactive Flat Panel Smart Board</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Navigasi Situs</h4>
+          <ul class="footer-links">
+            <li><a href="../tentang-kami.html">Tentang Kami</a></li>
+            <li><a href="../produk.html">Katalog Produk</a></li>
+            <li><a href="../paket.html">Paket Pengadaan</a></li>
+            <li><a href="../blog.html">Blog & Panduan Kantor</a></li>
+            <li><a href="../kontak.html">Kontak & Lokasi</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hubungi Kami</h4>
+          <ul class="footer-contact-list">
+            <li><i class="fas fa-phone-alt"></i> 0889-8964-3555</li>
+            <li><i class="fab fa-whatsapp"></i> 0889-8964-3555</li>
+            <li><i class="fas fa-envelope"></i> info@maroonatk.web.id</li>
+            <li><i class="fas fa-globe"></i> https://maroonatk.web.id/</li>
+            <li><i class="fas fa-map-marker-alt"></i> Layanan Pengadaan: Malang, Surabaya, Jakarta, Denpasar, Makassar & Seluruh Indonesia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 MAROON ATK. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING WA & BACK TO TOP ===== -->
   <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK" target="_blank" class="float-wa"><i class="fab fa-whatsapp"></i></a>
   <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
   <script src="../assets/js/script.js"></script>
-  <script>
-    document.querySelectorAll('[data-wa-product]').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const productName = this.getAttribute('data-wa-product');
-        const msg = `Halo MAROON ATK, saya tertarik dengan produk: ${productName}. Mohon info harga dan ketersediaan.`;
-        window.open(`https://wa.me/6288989643555?text=${encodeURIComponent(msg)}`, '_blank');
-      });
-    });
-  </script>
 </body>
 </html>

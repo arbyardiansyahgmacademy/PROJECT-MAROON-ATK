@@ -20,6 +20,241 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
+  <style>
+    /* ===== HERO FEATURES GRID (RAMPI) ===== */
+    .hero-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 0.9rem 0.9rem;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-align: left;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .hero-feature-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    @media (max-width: 768px) {
+      .hero-features-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-feature-card {
+        padding: 0.7rem 0.7rem;
+      }
+    }
+
+    /* ===== PAKET CARD ELEGAN (tetap seperti sebelumnya) ===== */
+    .package-grid-elegant {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 2rem;
+    }
+
+    .package-card-elegant {
+      background: var(--bg-card, #ffffff);
+      border-radius: var(--radius-md, 12px);
+      border: 1px solid var(--border-color, #e0e0e0);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .package-card-elegant:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(122,26,26,0.10), 0 6px 16px rgba(0,0,0,0.05);
+    }
+
+    .package-card-elegant .package-thumb img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .package-body {
+      padding: 1.5rem 1.5rem 2rem;
+    }
+
+    .package-icon-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .package-icon-wrap i {
+      font-size: 1.5rem;
+      color: var(--primary-maroon, #7a1a1a);
+      width: 2.2rem;
+      text-align: center;
+    }
+
+    .package-icon-wrap h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark, #111);
+      margin: 0;
+    }
+
+    .package-sub {
+      color: var(--text-muted, #6c757d);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .package-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.3rem 0;
+      font-size: 0.92rem;
+      color: var(--text-dark, #111);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .package-features li:last-child {
+      border-bottom: none;
+    }
+
+    .package-features li i {
+      color: var(--secondary-gold, #c9a84c);
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+
+    .btn-package {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--primary-maroon, #7a1a1a);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .btn-package:hover {
+      background: var(--dark-maroon, #4a0f0f);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(128,0,32,0.3);
+      color: #fff;
+    }
+
+    /* Benefit Grid (tetap) */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .benefit-card {
+      position: relative;
+      background: var(--bg-card, #ffffff);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-md, 12px);
+      border: 1px solid var(--border-color, #e0e0e0);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .benefit-card .benefit-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--maroon-soft, #f5e6e6);
+      color: var(--primary-maroon, #7a1a1a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 1rem;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark, #111);
+    }
+
+    .benefit-card p {
+      color: var(--text-muted, #6c757d);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .benefit-hover-line {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+      border-radius: 4px 4px 0 0;
+      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(122,26,26,0.12);
+      border-color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .benefit-card:hover .benefit-hover-line {
+      width: 60%;
+    }
+
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.12) rotate(-4deg);
+      background: var(--primary-maroon, #7a1a1a);
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .package-grid-elegant {
+        gap: 1.5rem;
+      }
+      .package-body {
+        padding: 1.25rem;
+      }
+      .benefit-card {
+        padding: 2rem 1.25rem;
+      }
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,41 +278,42 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container navbar-container">
-      <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
-  <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;">
-  <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
-</a>
-      <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
-        <li class="nav-item"><a href="tentang-kami.html" class="nav-link">Tentang Kami</a></li>
-        <li class="nav-item nav-item-dropdown">
-          <span class="nav-link dropdown-toggle">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></span>
-          <div class="dropdown-menu">
-            <a href="produk/atk.html" class="dropdown-item"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
-            <a href="produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
-            <a href="produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
-            <a href="produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
-            <a href="produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
-            <a href="produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
-            <a href="produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
-            <a href="produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="paket.html" class="nav-link active">Paket</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="kontak.html" class="nav-link">Kontak</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20paket%20pengadaan" target="_blank" class="btn btn-whatsapp btn-sm">
-          <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
-        </a>
-      </div>
+  <!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container navbar-container">
+    <a href="../index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;" />
+      <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="../tentang-kami.html" class="nav-link">Tentang Kami</a></li>
+      <li class="nav-item nav-item-dropdown">
+        <!-- Mengubah <span> menjadi <a> dan menambahkan href="../produk.html" -->
+        <a href="../produk.html" class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></a>
+        <div class="dropdown-menu">
+          <a href="../produk/atk.html" class="dropdown-item active"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
+          <a href="../produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
+          <a href="../produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
+          <a href="../produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
+          <a href="../produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
+          <a href="../produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
+          <a href="../produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
+          <a href="../produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="../paket.html" class="nav-link">Paket</a></li>
+      <li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="../kontak.html" class="nav-link">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20ATK" target="_blank" class="btn btn-whatsapp btn-sm">
+        <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
+      </a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb-container">
@@ -90,29 +326,177 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="section section-bg-light" style="padding: 3.5rem 0;">
-    <div class="container text-center" style="max-width: 820px; margin: 0 auto;">
-      <span class="badge-tag" style="background-color: var(--maroon-soft); color: var(--primary-maroon); padding: 0.35rem 1rem; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600; border: 1px solid var(--maroon-border);">SOLUSI BUNDLING TERPADU</span>
-      <h1 style="margin-top: 0.75rem; margin-bottom: 1rem;">Paket Pengadaan Peralatan Kantor</h1>
-      <p style="color: var(--text-muted); font-size: 1.05rem;">
+  <!-- ===== HERO PAKET - RAMPI DENGAN GRID FITUR ===== -->
+  <section style="
+    background: linear-gradient(135deg, #7a1a1a 0%, #4a0f0f 100%);
+    padding: 3rem 0 3.5rem;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+  ">
+    <div class="container" style="
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    ">
+      <!-- Badge -->
+      <span style="
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        padding: 0.35rem 1.1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 1rem;
+        backdrop-filter: blur(4px);
+      ">
+        <i class="fas fa-boxes" style="color: #c9a84c;"></i> SOLUSI BUNDLING TERPADU
+      </span>
+
+      <!-- Title -->
+      <h1 style="
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      ">Paket Pengadaan Peralatan Kantor</h1>
+
+      <!-- Description -->
+      <p style="
+        font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 700px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+        font-weight: 400;
+      ">
         Solusi pengadaan terintegrasi untuk efisiensi anggaran & kemudahan administratif. Dapatkan harga khusus bundling dengan garansi layanan purna jual.
       </p>
+
+      <!-- Grid 3 Fitur Utama Paket -->
+      <div class="hero-features-grid">
+        <!-- Fitur 1: Hemat Biaya -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-tags"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Hemat Biaya hingga 15%</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Paket bundling lebih ekonomis</p>
+          </div>
+        </div>
+
+        <!-- Fitur 2: Satu Pintu -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-arrows-spin"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Bundling Terintegrasi</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">ATK, Furniture & Teknologi</p>
+          </div>
+        </div>
+
+        <!-- Fitur 3: Garansi & Dukungan -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-shield-halved"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Garansi & Dukungan Teknis</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Instalasi & purna jual</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Decorative Elements (ramping) -->
+    <div style="
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    "></div>
+    <div style="
+      position: absolute;
+      bottom: -15%;
+      left: -3%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    "></div>
   </section>
 
-  <!-- Section Cards Paket -->
+  <!-- Section Cards Paket (Gaya Elegant seperti sebelumnya) -->
   <section class="section">
     <div class="container">
-      <div class="package-grid">
+      <div class="package-grid-elegant">
 
-        <!-- Paket 1 -->
-        <div class="package-card">
-          <div class="package-header">
-            <h3>Paket Kantor Baru / Startup</h3>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Kelengkapan dasar siap pakai untuk ruang kantor baru 5-10 staf.</p>
+        <!-- Paket 1: Kantor Baru / Startup -->
+        <div class="package-card-elegant">
+          <div class="package-thumb">
+            <img src="assets/image/PAKET/Paket-Kantor-Baru.webp" alt="Paket Kantor Baru MAROON ATK" loading="lazy" />
           </div>
           <div class="package-body">
+            <div class="package-icon-wrap">
+              <i class="fas fa-building"></i>
+              <h3>Paket Kantor Baru / Startup</h3>
+            </div>
+            <div class="package-sub">Kelengkapan dasar siap pakai untuk ruang kantor baru 5-10 staf.</div>
             <ul class="package-features">
               <li><i class="fas fa-check-circle"></i> 5-10 Unit Meja Kerja Staf Minimalis M-120</li>
               <li><i class="fas fa-check-circle"></i> 5-10 Unit Kursi Mesh Ergonomis K-40</li>
@@ -120,20 +504,22 @@
               <li><i class="fas fa-check-circle"></i> 2 Unit Lemari Arsip Besi Pintu Geser Kaca</li>
               <li><i class="fas fa-check-circle"></i> Starter Pack ATK Kantor Lengkap (Kertas, Pen, Odner)</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kantor%20Baru" target="_blank" class="btn btn-whatsapp w-100" style="margin-top: auto;">
-              <i class="fab fa-whatsapp"></i> Minta Penawaran Paket
-            </a>
+            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kantor%20Baru" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
           </div>
         </div>
 
-        <!-- Paket 2 -->
-        <div class="package-card featured">
-          <span style="position: absolute; top: 12px; right: 12px; background: var(--secondary-gold); color: var(--primary-maroon); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: var(--radius-pill); text-transform: uppercase;">Paling Populer</span>
-          <div class="package-header">
-            <h3>Paket Smart Meeting Room</h3>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Sistem rapat modern berteknologi tinggi untuk instansi & swasta.</p>
+        <!-- Paket 2: Smart Meeting Room (Paling Populer) -->
+        <div class="package-card-elegant" style="position:relative;">
+          <span style="position:absolute;top:14px;right:14px;background:var(--primary-maroon);color:#fff;font-size:0.7rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:50px;text-transform:uppercase;z-index:5;box-shadow:0 2px 8px rgba(128,0,32,0.3);">Paling Populer</span>
+          <div class="package-thumb">
+            <img src="assets/image/PAKET/Paket-Smart-Meeting-Room.webp" alt="Paket Smart Meeting Room MAROON ATK" loading="lazy" />
           </div>
           <div class="package-body">
+            <div class="package-icon-wrap">
+              <i class="fas fa-users-viewfinder"></i>
+              <h3>Paket Smart Meeting Room</h3>
+            </div>
+            <div class="package-sub">Sistem rapat modern berteknologi tinggi untuk instansi & swasta.</div>
             <ul class="package-features">
               <li><i class="fas fa-check-circle"></i> 1 Unit Interactive Flat Panel Smart Board 65" / 75" 4K</li>
               <li><i class="fas fa-check-circle"></i> 1 Set Meja Rapat Conference 8-12 Person</li>
@@ -141,19 +527,21 @@
               <li><i class="fas fa-check-circle"></i> Camera & Microphone Array Video Conference</li>
               <li><i class="fas fa-check-circle"></i> Gratis Instalasi & Training Penggunaan</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Smart%20Meeting%20Room" target="_blank" class="btn btn-whatsapp w-100" style="margin-top: auto;">
-              <i class="fab fa-whatsapp"></i> Minta Penawaran Paket
-            </a>
+            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Smart%20Meeting%20Room" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
           </div>
         </div>
 
-        <!-- Paket 3 -->
-        <div class="package-card">
-          <div class="package-header">
-            <h3>Paket Pengadaan ATK Rutin</h3>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Suplai bulanan/triwulan konsumsi stasioneri kantor.</p>
+        <!-- Paket 3: Pengadaan ATK Rutin -->
+        <div class="package-card-elegant">
+          <div class="package-thumb">
+            <img src="assets/image/PAKET/Paket-Pengadaan-ATK-Rutin.webp" alt="Paket ATK Rutin MAROON ATK" loading="lazy" />
           </div>
           <div class="package-body">
+            <div class="package-icon-wrap">
+              <i class="fas fa-pencil-ruler"></i>
+              <h3>Paket Pengadaan ATK Rutin</h3>
+            </div>
+            <div class="package-sub">Suplai bulanan/triwulan konsumsi stasioneri kantor.</div>
             <ul class="package-features">
               <li><i class="fas fa-check-circle"></i> Suplai Kertas HVS A4 & F4 75gr/80gr Grosir</li>
               <li><i class="fas fa-check-circle"></i> Tinta Printer & Toner Original All Brand</li>
@@ -161,19 +549,21 @@
               <li><i class="fas fa-check-circle"></i> Pulpen, Marker, Staples, & Perlengkapan Meja</li>
               <li><i class="fas fa-check-circle"></i> Jadwal Pengiriman Berkala & Invoice Resmi</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Pengadaan%20ATK%20Rutin" target="_blank" class="btn btn-whatsapp w-100" style="margin-top: auto;">
-              <i class="fab fa-whatsapp"></i> Minta Penawaran Paket
-            </a>
+            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Pengadaan%20ATK%20Rutin" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
           </div>
         </div>
 
-        <!-- Paket 4 -->
-        <div class="package-card">
-          <div class="package-header">
-            <h3>Paket Kelas Digital / Kampus</h3>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Fasilitas pembelajaran interaktif untuk sekolah & kampus.</p>
+        <!-- Paket 4: Kelas Digital / Kampus -->
+        <div class="package-card-elegant">
+          <div class="package-thumb">
+            <img src="assets/image/PAKET/Paket-Kelas-Digital-Kampus.webp" alt="Paket Kelas Digital MAROON ATK" loading="lazy" />
           </div>
           <div class="package-body">
+            <div class="package-icon-wrap">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <h3>Paket Kelas Digital / Kampus</h3>
+            </div>
+            <div class="package-sub">Fasilitas pembelajaran interaktif untuk sekolah & kampus.</div>
             <ul class="package-features">
               <li><i class="fas fa-check-circle"></i> Digital Smart Whiteboard 55" / 65" Touch Screen</li>
               <li><i class="fas fa-check-circle"></i> Sound System Ruang Kelas & Mikrofon Wireless</li>
@@ -181,9 +571,7 @@
               <li><i class="fas fa-check-circle"></i> Lemari Penyimpanan Laptop / Tablet Kunci</li>
               <li><i class="fas fa-check-circle"></i> Garansi Unit & Pendampingan Teknis</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kelas%20Digital" target="_blank" class="btn btn-whatsapp w-100" style="margin-top: auto;">
-              <i class="fab fa-whatsapp"></i> Minta Penawaran Paket
-            </a>
+            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kelas%20Digital" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
           </div>
         </div>
 
@@ -200,21 +588,26 @@
         <p>Efisiensi biaya dan kemudahan operasional untuk pengadaan kantor Anda.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 2rem;">
-        <div style="background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <div style="font-size: 2rem; color: var(--primary-maroon); margin-bottom: 1rem;"><i class="fas fa-tags"></i></div>
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Hemat Anggaran hingga 15%</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Harga paket bundling jauh lebih ekonomis dibandingkan pembelian unit secara terpisah.</p>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-tags"></i></div>
+          <h3>Hemat Anggaran hingga 15%</h3>
+          <p>Harga paket bundling jauh lebih ekonomis dibandingkan pembelian unit secara terpisah.</p>
+          <div class="benefit-hover-line"></div>
         </div>
-        <div style="background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <div style="font-size: 2rem; color: var(--primary-maroon); margin-bottom: 1rem;"><i class="fas fa-clock"></i></div>
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Proses Cepat & Praktis</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Satu pintu administrasi vendor untuk seluruh kebutuhan kantor, mulai dari ATK hingga Videotron.</p>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+          <h3>Proses Cepat & Praktis</h3>
+          <p>Satu pintu administrasi vendor untuk seluruh kebutuhan kantor, mulai dari ATK hingga Videotron.</p>
+          <div class="benefit-hover-line"></div>
         </div>
-        <div style="background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-          <div style="font-size: 2rem; color: var(--primary-maroon); margin-bottom: 1rem;"><i class="fas fa-tools"></i></div>
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Gratis Instalasi & Setting</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Tim teknisi kami menangani perakitan furniture dan pemasangan unit display hingga siap digunakan.</p>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-tools"></i></div>
+          <h3>Gratis Instalasi & Setting</h3>
+          <p>Tim teknisi kami menangani perakitan furniture dan pemasangan unit display hingga siap digunakan.</p>
+          <div class="benefit-hover-line"></div>
         </div>
       </div>
     </div>
@@ -238,12 +631,12 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-  <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
-    <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;">
-    <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
-  </a>
-  <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
-</div>
+          <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
+            <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;">
+            <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
+          </a>
+          <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
+        </div>
         <div class="footer-col">
           <h4>Kategori Utama</h4>
           <ul class="footer-links">
@@ -276,7 +669,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div>&copy; 2026 MAROON ATK. All Rights Reserved.  </div>
+        <div>&copy; 2026 MAROON ATK. All Rights Reserved.</div>
       </div>
     </div>
   </footer>

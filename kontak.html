@@ -20,6 +20,375 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
+  <style>
+    /* ===== HERO FEATURES GRID (RAMPI) ===== */
+    .hero-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 0.9rem 0.9rem;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-align: left;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .hero-feature-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    @media (max-width: 768px) {
+      .hero-features-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-feature-card {
+        padding: 0.7rem 0.7rem;
+      }
+    }
+
+    /* ===== CONTACT CARD ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-card {
+      position: relative;
+      background: var(--bg-card, #ffffff);
+      padding: 2rem 1.5rem 2rem;
+      border-radius: var(--radius-md, 12px);
+      border: 1px solid var(--border-color, #e0e0e0);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: default;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-card .contact-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--maroon-soft, #f5e6e6);
+      color: var(--primary-maroon, #7a1a1a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem auto;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .contact-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark, #111);
+      transition: color 0.3s ease;
+    }
+
+    .contact-card .contact-value {
+      color: var(--text-muted, #6c757d);
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    .contact-card .contact-value a {
+      color: var(--text-muted, #6c757d);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-card .contact-value a:hover {
+      color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .contact-hover-line {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+      border-radius: 4px 4px 0 0;
+      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+      border-color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .contact-card:hover .contact-hover-line {
+      width: 70%;
+    }
+
+    .contact-card:hover .contact-icon {
+      transform: scale(1.15) rotate(-4deg);
+      background-color: var(--primary-maroon, #7a1a1a);
+      color: #ffffff;
+    }
+
+    .contact-card:hover h4 {
+      color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .contact-card:hover .contact-value,
+    .contact-card:hover .contact-value a {
+      color: var(--text-dark, #111);
+    }
+
+    /* ---- Responsive Contact Card ---- */
+    @media (max-width: 768px) {
+      .contact-grid {
+        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .contact-card {
+        padding: 1.5rem 1rem 1.75rem;
+      }
+      .contact-card .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+      }
+      .contact-card h4 {
+        font-size: 1rem;
+      }
+      .contact-card:hover {
+        transform: translateY(-6px) scale(1.01);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+      }
+      .contact-card {
+        padding: 1.2rem 0.6rem 1.5rem;
+      }
+      .contact-card .contact-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+      }
+      .contact-card h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
+      }
+      .contact-card .contact-value {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ===== CONTACT INFO LIST ===== */
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card, #ffffff);
+      border-radius: var(--radius-md, 12px);
+      border: 1px solid var(--border-color, #e0e0e0);
+      transition: all 0.3s ease;
+    }
+
+    .contact-info-item:hover {
+      transform: translateX(6px);
+      border-color: var(--primary-maroon, #7a1a1a);
+      box-shadow: 0 4px 16px rgba(122, 26, 26, 0.08);
+    }
+
+    .contact-info-item .info-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background-color: var(--maroon-soft, #f5e6e6);
+      color: var(--primary-maroon, #7a1a1a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info-item:hover .info-icon {
+      background-color: var(--primary-maroon, #7a1a1a);
+      color: #ffffff;
+    }
+
+    .contact-info-item h4 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      color: var(--text-dark, #111);
+    }
+
+    .contact-info-item p {
+      color: var(--text-muted, #6c757d);
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form-wrapper {
+      background: var(--bg-card, #ffffff);
+      border: 1px solid var(--border-color, #e0e0e0);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-lg, 16px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+    }
+
+    .contact-form-wrapper:hover {
+      box-shadow: 0 8px 32px rgba(122, 26, 26, 0.08);
+      border-color: var(--primary-maroon, #7a1a1a);
+    }
+
+    .contact-form-wrapper h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .contact-form-wrapper label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-dark, #111);
+    }
+
+    .contact-form-wrapper input,
+    .contact-form-wrapper textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color, #e0e0e0);
+      border-radius: var(--radius-md, 8px);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+    }
+
+    .contact-form-wrapper input:focus,
+    .contact-form-wrapper textarea:focus {
+      outline: none;
+      border-color: var(--primary-maroon, #7a1a1a);
+      box-shadow: 0 0 0 3px rgba(122, 26, 26, 0.1);
+    }
+
+    .contact-form-wrapper textarea {
+      resize: vertical;
+    }
+
+    /* ---- Responsive Form ---- */
+    @media (max-width: 768px) {
+      .contact-form-wrapper {
+        padding: 1.5rem 1.25rem;
+      }
+      .contact-form-wrapper h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-form-wrapper {
+        padding: 1.25rem 1rem;
+      }
+      .contact-form-wrapper h2 {
+        font-size: 1.1rem;
+      }
+      .contact-form-wrapper input,
+      .contact-form-wrapper textarea {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+      }
+      .contact-form-wrapper label {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ===== LAYOUT: 2 KOLOM MENJADI 1 KOLOM DI MOBILE ===== */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-layout {
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+    }
+
+    /* ===== UTILITY ===== */
+    .btn-block {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+      .btn-block {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+      }
+    }
+
+    /* ===== RESPONSIVE BREADCRUMB ===== */
+    @media (max-width: 480px) {
+      .breadcrumb-container .container {
+        padding: 0 1rem;
+      }
+      .breadcrumb-list {
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .breadcrumb-item a {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,41 +412,42 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container navbar-container">
-      <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
-  <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;">
-  <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
-</a>
-      <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
-        <li class="nav-item"><a href="tentang-kami.html" class="nav-link">Tentang Kami</a></li>
-        <li class="nav-item nav-item-dropdown">
-          <span class="nav-link dropdown-toggle">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></span>
-          <div class="dropdown-menu">
-            <a href="produk/atk.html" class="dropdown-item"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
-            <a href="produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
-            <a href="produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
-            <a href="produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
-            <a href="produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
-            <a href="produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
-            <a href="produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
-            <a href="produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="paket.html" class="nav-link">Paket</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="kontak.html" class="nav-link active">Kontak</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi" target="_blank" class="btn btn-whatsapp btn-sm">
-          <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
-        </a>
-      </div>
+ <!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container navbar-container">
+    <a href="../index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;" />
+      <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="../tentang-kami.html" class="nav-link">Tentang Kami</a></li>
+      <li class="nav-item nav-item-dropdown">
+        <!-- Mengubah <span> menjadi <a> dan menambahkan href="../produk.html" -->
+        <a href="../produk.html" class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></a>
+        <div class="dropdown-menu">
+          <a href="../produk/atk.html" class="dropdown-item active"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
+          <a href="../produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
+          <a href="../produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
+          <a href="../produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
+          <a href="../produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
+          <a href="../produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
+          <a href="../produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
+          <a href="../produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="../paket.html" class="nav-link">Paket</a></li>
+      <li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="../kontak.html" class="nav-link">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20ATK" target="_blank" class="btn btn-whatsapp btn-sm">
+        <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
+      </a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb-container">
@@ -90,103 +460,293 @@
     </div>
   </div>
 
-  <!-- Hero Kontak -->
-  <section class="section section-bg-light" style="padding: 3.5rem 0;">
-    <div class="container text-center" style="max-width: 800px; margin: 0 auto;">
-      <span class="badge-tag" style="background-color: var(--maroon-soft); color: var(--primary-maroon); padding: 0.35rem 1rem; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600; border: 1px solid var(--maroon-border);">HUBUNGI KAMI</span>
-      <h1 style="margin-top: 0.75rem; margin-bottom: 1rem;">Kontak & Konsultasi MAROON ATK</h1>
-      <p style="color: var(--text-muted); font-size: 1.1rem;">
-        Tim kami siap membantu kebutuhan pengadaan ATK, furniture kantor, dan smart display Anda. Hubungi kami melalui WhatsApp, telepon, email, atau isi formulir di bawah ini.
+  <!-- ===== HERO KONTAK - RAMPI DENGAN GRID FITUR ===== -->
+  <section style="
+    background: linear-gradient(135deg, #7a1a1a 0%, #4a0f0f 100%);
+    padding: 3rem 0 3.5rem;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+  ">
+    <div class="container" style="
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    ">
+      <!-- Badge -->
+      <span style="
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        padding: 0.35rem 1.1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 1rem;
+        backdrop-filter: blur(4px);
+      ">
+        <i class="fas fa-headset" style="color: #c9a84c;"></i> HUBUNGI KAMI
+      </span>
+
+      <!-- Title -->
+      <h1 style="
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      ">Kontak & Konsultasi MAROON ATK</h1>
+
+      <!-- Description -->
+      <p style="
+        font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 700px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+        font-weight: 400;
+      ">
+        Tim kami siap membantu kebutuhan pengadaan ATK, furniture kantor, dan smart display. Hubungi kami melalui WhatsApp, telepon, email, atau isi formulir di bawah ini.
       </p>
+
+      <!-- Grid 3 Fitur Utama Kontak -->
+      <div class="hero-features-grid">
+        <!-- Fitur 1: Konsultasi Gratis -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-comments"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Konsultasi Gratis</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Diskusi kebutuhan tanpa biaya</p>
+          </div>
+        </div>
+
+        <!-- Fitur 2: Respon Cepat -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">Respon Cepat</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Balasan dalam hitungan jam</p>
+          </div>
+        </div>
+
+        <!-- Fitur 3: Surat Penawaran Resmi -->
+        <div class="hero-feature-card">
+          <div style="
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+          ">
+            <i class="fas fa-file-invoice"></i>
+          </div>
+          <div>
+            <h4 style="color: #ffffff; margin: 0; font-size: 0.85rem; font-weight: 700;">SPH Resmi</h4>
+            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.7rem;">Surat Penawaran Harga siap</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Decorative Elements -->
+    <div style="
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    "></div>
+    <div style="
+      position: absolute;
+      bottom: -15%;
+      left: -3%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    "></div>
   </section>
 
-  <!-- Info & Form -->
+  <!-- ===== Info & Form ===== -->
   <section class="section">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 3rem; align-items: start;">
 
-        <!-- Info Kontak -->
+      <!-- Card Kontak (Grid 4) -->
+      <div class="contact-grid">
+        <!-- Telepon -->
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <h4>Telepon</h4>
+          <div class="contact-value">
+            <a href="tel:088989643555">0889-8964-3555</a>
+          </div>
+          <div class="contact-hover-line"></div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+          <h4>WhatsApp</h4>
+          <div class="contact-value">
+            <a href="https://wa.me/6288989643555" target="_blank">0889-8964-3555</a>
+          </div>
+          <div class="contact-hover-line"></div>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <h4>Email</h4>
+          <div class="contact-value">
+            <a href="mailto:info@maroonatk.web.id">info@maroonatk.web.id</a>
+          </div>
+          <div class="contact-hover-line"></div>
+        </div>
+
+        <!-- Area Layanan -->
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h4>Area Layanan</h4>
+          <div class="contact-value">
+            Malang, Surabaya, Jakarta, Denpasar, Makassar & Seluruh Indonesia
+          </div>
+          <div class="contact-hover-line"></div>
+        </div>
+      </div>
+
+      <!-- Layout 2 Kolom (jadi 1 kolom di mobile) -->
+      <div class="contact-layout">
+
+        <!-- Info Detail -->
         <div>
-          <h2 style="margin-bottom: 1rem;">Informasi Kontak</h2>
-          <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem;">
-            Silakan hubungi kami langsung untuk respons tercepat, atau kirimkan detail kebutuhan Anda melalui formulir.
+          <h2 style="margin-bottom: 1rem;">Informasi Detail</h2>
+          <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem;">
+            Silakan hubungi kami langsung untuk respons tercepat, atau kirimkan detail kebutuhan Anda melalui formulir di samping.
           </p>
 
-          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; flex-shrink: 0; background-color: var(--maroon-soft); color: var(--primary-maroon); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                <i class="fas fa-phone-alt"></i>
-              </div>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
               <div>
-                <h4 style="margin-bottom: 0.25rem;">Telepon</h4>
-                <p style="color: var(--text-muted); margin: 0;">0889-8964-3555</p>
+                <h4>Telepon</h4>
+                <p>0889-8964-3555</p>
               </div>
             </div>
-            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; flex-shrink: 0; background-color: var(--maroon-soft); color: var(--primary-maroon); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                <i class="fab fa-whatsapp"></i>
-              </div>
+            <div class="contact-info-item">
+              <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
               <div>
-                <h4 style="margin-bottom: 0.25rem;">WhatsApp</h4>
-                <p style="color: var(--text-muted); margin: 0;">0889-8964-3555</p>
+                <h4>WhatsApp</h4>
+                <p>0889-8964-3555</p>
               </div>
             </div>
-            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; flex-shrink: 0; background-color: var(--maroon-soft); color: var(--primary-maroon); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                <i class="fas fa-envelope"></i>
-              </div>
+            <div class="contact-info-item">
+              <div class="info-icon"><i class="fas fa-envelope"></i></div>
               <div>
-                <h4 style="margin-bottom: 0.25rem;">Email</h4>
-                <p style="color: var(--text-muted); margin: 0;">info@maroonatk.web.id</p>
+                <h4>Email</h4>
+                <p>info@maroonatk.web.id</p>
               </div>
             </div>
-            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; flex-shrink: 0; background-color: var(--maroon-soft); color: var(--primary-maroon); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                <i class="fas fa-map-marked-alt"></i>
-              </div>
+            <div class="contact-info-item">
+              <div class="info-icon"><i class="fas fa-map-marked-alt"></i></div>
               <div>
-                <h4 style="margin-bottom: 0.25rem;">Area Layanan</h4>
-                <p style="color: var(--text-muted); margin: 0;">Malang, Surabaya, Jakarta, Denpasar, Makassar & Seluruh Indonesia</p>
+                <h4>Area Layanan</h4>
+                <p>Malang, Surabaya, Jakarta, Denpasar, Makassar & Seluruh Indonesia</p>
               </div>
             </div>
           </div>
 
-          <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20kantor." target="_blank" class="btn btn-whatsapp" style="margin-top: 2rem;">
+          <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20kantor." target="_blank" class="btn btn-whatsapp" style="margin-top: 1.5rem; display: inline-flex;">
             <i class="fab fa-whatsapp"></i> Chat Langsung via WhatsApp
           </a>
         </div>
 
         <!-- Form Kontak -->
-        <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
-          <h2 style="margin-bottom: 1.5rem;">Formulir Konsultasi</h2>
+        <div class="contact-form-wrapper">
+          <h2>Formulir Konsultasi</h2>
           <form id="contactForm">
             <div style="margin-bottom: 1.25rem;">
-              <label for="formNama" style="display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem;">Nama Lengkap</label>
-              <input type="text" id="formNama" name="formNama" placeholder="Masukkan nama Anda" required
-                style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.95rem;">
+              <label for="formNama">Nama Lengkap</label>
+              <input type="text" id="formNama" name="formNama" placeholder="Masukkan nama Anda" required>
             </div>
             <div style="margin-bottom: 1.25rem;">
-              <label for="formInstansi" style="display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem;">Instansi / Perusahaan</label>
-              <input type="text" id="formInstansi" name="formInstansi" placeholder="Nama instansi atau perusahaan"
-                style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.95rem;">
+              <label for="formInstansi">Instansi / Perusahaan</label>
+              <input type="text" id="formInstansi" name="formInstansi" placeholder="Nama instansi atau perusahaan">
             </div>
             <div style="margin-bottom: 1.25rem;">
-              <label for="formWhatsapp" style="display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem;">No. HP / WhatsApp</label>
-              <input type="tel" id="formWhatsapp" name="formWhatsapp" placeholder="08xx-xxxx-xxxx" required
-                style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.95rem;">
+              <label for="formWhatsapp">No. HP / WhatsApp</label>
+              <input type="tel" id="formWhatsapp" name="formWhatsapp" placeholder="08xx-xxxx-xxxx" required>
             </div>
             <div style="margin-bottom: 1.5rem;">
-              <label for="formPesan" style="display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem;">Pesan / Kebutuhan</label>
-              <textarea id="formPesan" name="formPesan" rows="4" placeholder="Jelaskan kebutuhan peralatan kantor Anda..." required
-                style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.95rem; resize: vertical;"></textarea>
+              <label for="formPesan">Pesan / Kebutuhan</label>
+              <textarea id="formPesan" name="formPesan" rows="4" placeholder="Jelaskan kebutuhan peralatan kantor Anda..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">
+            <button type="submit" class="btn btn-primary btn-block" style="border: none; cursor: pointer;">
               <i class="fab fa-whatsapp"></i> Kirim & Lanjutkan ke WhatsApp
             </button>
           </form>
         </div>
 
+      </div><!-- /contact-layout -->
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Butuh Penawaran Harga Spesifik?</h2>
+        <p>Mintalah Surat Penawaran Harga (SPH) resmi untuk kebutuhan pengadaan instansi atau perusahaan Anda.</p>
+        <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20Surat%20Penawaran%20Harga%20untuk%20kebutuhan%20kantor." target="_blank" class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Minta SPH via WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -196,12 +756,12 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-  <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
-    <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;">
-    <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
-  </a>
-  <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
-</div>
+          <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none; margin-bottom: 0.5rem;">
+            <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 36px; width: auto; margin-right: 2px;">
+            <span class="logo-text" style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">MAROON <span style="color: #7a1a1a;">ATK</span></span>
+          </a>
+          <p style="color: #e0e0e0;">Penyedia Peralatan Kantor, ATK, Furniture, Videotron, dan Smart Interactive Board Terpercaya untuk Instansi Pemerintah, Pendidikan, dan Swasta.</p>
+        </div>
         <div class="footer-col">
           <h4>Kategori Utama</h4>
           <ul class="footer-links">
@@ -243,5 +803,18 @@
   <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="assets/js/script.js"></script>
+  <script>
+    // Form handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nama = document.getElementById('formNama').value.trim();
+      const instansi = document.getElementById('formInstansi').value.trim();
+      const whatsapp = document.getElementById('formWhatsapp').value.trim();
+      const pesan = document.getElementById('formPesan').value.trim();
+
+      const text = `Halo MAROON ATK, saya ingin berkonsultasi.%0A%0A*Nama:* ${nama}%0A*Instansi:* ${instansi || '-'}%0A*No. WA:* ${whatsapp}%0A*Pesan:* ${pesan}`;
+      window.open(`https://wa.me/6288989643555?text=${text}`, '_blank');
+    });
+  </script>
 </body>
 </html>

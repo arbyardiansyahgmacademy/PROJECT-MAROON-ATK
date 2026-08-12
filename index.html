@@ -29,6 +29,367 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
 
+    <style>
+        /* ===== CARD EFFECTS UNIFORM ===== */
+        /* Category Card */
+        .category-card {
+            position: relative;
+            background: var(--bg-card, #ffffff);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            border: 1px solid var(--border-color, #e0e0e0);
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            display: block;
+            color: var(--text-dark, #111);
+        }
+        .category-card .category-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--maroon-soft, #f5e6e6);
+            color: var(--primary-maroon, #7a1a1a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem auto;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .category-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark, #111);
+            transition: color 0.3s ease;
+        }
+        .category-card p {
+            color: var(--text-muted, #6c757d);
+            font-size: 0.9rem;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        .category-card .category-hover-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+            border-radius: 4px 4px 0 0;
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+            border-color: var(--primary-maroon, #7a1a1a);
+        }
+        .category-card:hover .category-hover-line {
+            width: 70%;
+        }
+        .category-card:hover .category-icon {
+            transform: scale(1.15) rotate(-4deg);
+            background-color: var(--primary-maroon, #7a1a1a);
+            color: #ffffff;
+        }
+        .category-card:hover h3 {
+            color: var(--primary-maroon, #7a1a1a);
+        }
+        .category-card:hover p {
+            color: var(--text-dark, #111);
+        }
+
+        /* Value Card (Keunggulan) */
+        .value-card {
+            position: relative;
+            background: var(--bg-card, #ffffff);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            border: 1px solid var(--border-color, #e0e0e0);
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .value-card .value-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background-color: var(--maroon-soft, #f5e6e6);
+            color: var(--primary-maroon, #7a1a1a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .value-card .value-content h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark, #111);
+            transition: color 0.3s ease;
+        }
+        .value-card .value-content p {
+            color: var(--text-muted, #6c757d);
+            font-size: 0.92rem;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        .value-card .value-hover-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+            border-radius: 4px 4px 0 0;
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(122, 26, 26, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+            border-color: var(--primary-maroon, #7a1a1a);
+        }
+        .value-card:hover .value-hover-line {
+            width: 70%;
+        }
+        .value-card:hover .value-icon {
+            transform: scale(1.12) rotate(-4deg);
+            background-color: var(--primary-maroon, #7a1a1a);
+            color: #ffffff;
+        }
+        .value-card:hover .value-content h3 {
+            color: var(--primary-maroon, #7a1a1a);
+        }
+        .value-card:hover .value-content p {
+            color: var(--text-dark, #111);
+        }
+
+        /* Reason Card (Alasan Memilih) */
+        .reason-card {
+            position: relative;
+            background: var(--bg-card, #ffffff);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            border: 1px solid var(--border-color, #e0e0e0);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .reason-card .reason-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--maroon-soft, #f5e6e6);
+            color: var(--primary-maroon, #7a1a1a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 1rem auto;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reason-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark, #111);
+            transition: color 0.3s ease;
+        }
+        .reason-card p {
+            color: var(--text-muted, #6c757d);
+            font-size: 0.92rem;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        .reason-card .reason-hover-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+            border-radius: 4px 4px 0 0;
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reason-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(122, 26, 26, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
+            border-color: var(--primary-maroon, #7a1a1a);
+        }
+        .reason-card:hover .reason-hover-line {
+            width: 70%;
+        }
+        .reason-card:hover .reason-icon {
+            transform: scale(1.15) rotate(-4deg);
+            background-color: var(--primary-maroon, #7a1a1a);
+            color: #ffffff;
+        }
+        .reason-card:hover h3 {
+            color: var(--primary-maroon, #7a1a1a);
+        }
+        .reason-card:hover p {
+            color: var(--text-dark, #111);
+        }
+
+        /* Testimonial Card */
+        .testimonial-card-modern {
+            position: relative;
+            background: var(--bg-card, #ffffff);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-md, 12px);
+            border: 1px solid var(--border-color, #e0e0e0);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .testimonial-card-modern .testi-icon-modern {
+            color: var(--primary-maroon, #7a1a1a);
+            font-size: 1.8rem;
+            opacity: 0.3;
+            margin-bottom: 0.5rem;
+            transition: all 0.4s ease;
+        }
+        .testimonial-card-modern .testi-stars-modern {
+            color: #f5a623;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-card-modern .testi-text-modern {
+            color: var(--text-dark, #111);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+        .testimonial-card-modern .testi-author-modern {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .testimonial-card-modern .testi-avatar-modern {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color, #e0e0e0);
+            transition: border-color 0.3s ease;
+        }
+        .testimonial-card-modern .testi-name-modern {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark, #111);
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        .testimonial-card-modern .testi-role-modern {
+            color: var(--text-muted, #6c757d);
+            font-size: 0.8rem;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        .testimonial-card-modern .testi-hover-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-maroon, #7a1a1a), var(--secondary-gold, #c9a84c));
+            border-radius: 4px 4px 0 0;
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .testimonial-card-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(122, 26, 26, 0.12), 0 6px 16px rgba(0, 0, 0, 0.04);
+            border-color: var(--primary-maroon, #7a1a1a);
+        }
+        .testimonial-card-modern:hover .testi-hover-line {
+            width: 70%;
+        }
+        .testimonial-card-modern:hover .testi-icon-modern {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+        .testimonial-card-modern:hover .testi-avatar-modern {
+            border-color: var(--primary-maroon, #7a1a1a);
+        }
+        .testimonial-card-modern:hover .testi-name-modern {
+            color: var(--primary-maroon, #7a1a1a);
+        }
+        .testimonial-card-modern:hover .testi-role-modern {
+            color: var(--text-dark, #111);
+        }
+        .testimonial-card-modern:hover .testi-text-modern {
+            color: var(--text-dark, #111);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .category-card,
+            .reason-card,
+            .testimonial-card-modern {
+                padding: 1.5rem 1rem;
+            }
+            .category-card .category-icon,
+            .reason-card .reason-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            .value-card {
+                padding: 1.25rem 1rem;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .value-card .value-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+            .category-card:hover,
+            .reason-card:hover,
+            .testimonial-card-modern:hover {
+                transform: translateY(-6px) scale(1.01);
+            }
+            .value-card:hover {
+                transform: translateY(-4px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-card,
+            .reason-card,
+            .testimonial-card-modern {
+                padding: 1.25rem 0.75rem;
+            }
+            .category-card .category-icon,
+            .reason-card .reason-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+            .category-card h3,
+            .reason-card h3 {
+                font-size: 0.95rem;
+            }
+            .testimonial-card-modern .testi-text-modern {
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
         {
@@ -60,41 +421,42 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
-                <img src="assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;" />
-                <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-main, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
-            </a>
-            <button class="hamburger" aria-label="Toggle Navigation Menu"><i class="fas fa-bars"></i></button>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link active">Beranda</a></li>
-                <li class="nav-item"><a href="tentang-kami.html" class="nav-link">Tentang Kami</a></li>
-                <li class="nav-item nav-item-dropdown">
-                    <span class="nav-link dropdown-toggle">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></span>
-                    <div class="dropdown-menu">
-                        <a href="produk/atk.html" class="dropdown-item"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
-                        <a href="produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
-                        <a href="produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
-                        <a href="produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
-                        <a href="produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
-                        <a href="produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron LED</a>
-                        <a href="produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
-                        <a href="produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="paket.html" class="nav-link">Paket</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="kontak.html" class="nav-link">Kontak</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20peralatan%20kantor." target="_blank" class="btn btn-whatsapp btn-sm">
-                    <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
-                </a>
-            </div>
+    <!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container navbar-container">
+    <a href="../index.html" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="../assets/image/favicon-maroon-atk.webp" alt="MAROON ATK" class="logo-img" style="height: 38px; width: auto; margin-right: 2px;" />
+      <span class="logo-text" style="font-weight: 700; font-size: 1.15rem; color: var(--text-dark, #1a1a2e);">MAROON <span style="color: var(--primary-maroon, #7a1a1a);">ATK</span></span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="../tentang-kami.html" class="nav-link">Tentang Kami</a></li>
+      <li class="nav-item nav-item-dropdown">
+        <!-- Mengubah <span> menjadi <a> dan menambahkan href="../produk.html" -->
+        <a href="../produk.html" class="nav-link dropdown-toggle active">Produk <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></a>
+        <div class="dropdown-menu">
+          <a href="../produk/atk.html" class="dropdown-item active"><i class="fas fa-pen-nib"></i> Alat Tulis Kantor</a>
+          <a href="../produk/meja-kantor.html" class="dropdown-item"><i class="fas fa-table"></i> Meja Kantor</a>
+          <a href="../produk/kursi-kantor.html" class="dropdown-item"><i class="fas fa-chair"></i> Kursi Kantor</a>
+          <a href="../produk/lemari-arsip.html" class="dropdown-item"><i class="fas fa-archive"></i> Lemari Arsip</a>
+          <a href="../produk/furniture-kantor.html" class="dropdown-item"><i class="fas fa-couch"></i> Furniture Kantor</a>
+          <a href="../produk/videotron.html" class="dropdown-item"><i class="fas fa-tv"></i> Videotron</a>
+          <a href="../produk/interactive-flat-panel.html" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Interactive Flat Panel</a>
+          <a href="../produk/papan-tulis-digital.html" class="dropdown-item"><i class="fas fa-digital-tachograph"></i> Papan Tulis Digital</a>
         </div>
-    </nav>
+      </li>
+      <li class="nav-item"><a href="../paket.html" class="nav-link">Paket</a></li>
+      <li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="../kontak.html" class="nav-link">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20ATK" target="_blank" class="btn btn-whatsapp btn-sm">
+        <i class="fab fa-whatsapp"></i> <span>Hubungi Kami</span>
+      </a>
+    </div>
+  </div>
+</nav>
 
     <!-- ===== HERO SECTION ===== -->
     <section class="hero-slider-section">
@@ -105,7 +467,6 @@
                         <i class="fas fa-check-circle"></i> Supplier • Vendor • Distributor • Pengadaan
                     </div>
                     <h1>Solusi Lengkap <span>Peralatan & Kebutuhan Kantor</span></h1>
-                    <!-- Deskripsi hero: ukuran diperkecil, bold, jarak dari heading, dan lebar dibatasi -->
                     <p style="font-size: 0.66rem; font-weight: bold; margin-top: 0.70rem; max-width: 120%; line-height: 1.4;">
                         MAROON ATK hadir sebagai supplier, vendor, distributor, sekaligus mitra pengadaan berbagai peralatan dan kebutuhan kantor. Kami menghadirkan beragam solusi, mulai dari ATK, furniture ergonomis, perangkat teknologi, Videotron LED, hingga Smart Interactive Display untuk mendukung kebutuhan instansi pemerintah, sekolah, kampus, perusahaan swasta, dan perkantoran secara profesional, terpercaya, dan tepat guna.
                     </p>
@@ -119,7 +480,6 @@
                             <span class="label">Rating Pengadaan</span>
                         </div>
                     </div>
-                    <!-- 3 statistik sejajar horizontal -->
                     <div class="hero-stats">
                         <div class="stat-item">
                             <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -167,7 +527,6 @@
                 <div class="about-image">
                     <div class="about-slider" id="aboutSlider">
                         <div class="slider-track" id="aboutSliderTrack">
-                            <!-- Gunakan gambar lokal dari folder assets/image/ -->
                             <div class="slider-slide">
                                 <img src="assets/image/herogeser-1.webp" alt="Furniture Kantor dan Lemari Arsip MAROON ATK" loading="lazy" />
                             </div>
@@ -215,41 +574,49 @@
                     <div class="category-icon"><i class="fas fa-pen-nib"></i></div>
                     <h3>ATK</h3>
                     <p>Kertas, Pen, Odner, Map</p>
+                    <div class="category-hover-line"></div>
                 </a>
                 <a href="produk/meja-kantor.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-table"></i></div>
                     <h3>Meja Kantor</h3>
                     <p>Meja Staf, Direktur, Rapat</p>
+                    <div class="category-hover-line"></div>
                 </a>
                 <a href="produk/kursi-kantor.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-chair"></i></div>
                     <h3>Kursi Kantor</h3>
                     <p>Kursi Ergonomis & Hidrolik</p>
+                    <div class="category-hover-line"></div>
                 </a>
                 <a href="produk/lemari-arsip.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-archive"></i></div>
                     <h3>Lemari Arsip</h3>
                     <p>Filing Cabinet & Locker</p>
+                    <div class="category-hover-line"></div>
                 </a>
                 <a href="produk/furniture-kantor.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-couch"></i></div>
                     <h3>Furniture Kantor</h3>
                     <p>Sofa Tamu & Partisi</p>
+                    <div class="category-hover-line"></div>
                 </a>
                 <a href="produk/videotron.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-tv"></i></div>
                     <h3>Videotron</h3>
                     <p>LED Indoor & Outdoor</p>
+                    <div class="category-hover-line"></div>
                 </a>
                 <a href="produk/interactive-flat-panel.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     <h3>Interactive Panel</h3>
                     <p>Smart Board 65" - 86"</p>
+                    <div class="category-hover-line"></div>
                 </a>
                 <a href="produk/papan-tulis-digital.html" class="category-card">
                     <div class="category-icon"><i class="fas fa-digital-tachograph"></i></div>
                     <h3>Papan Digital</h3>
                     <p>Digital Whiteboard</p>
+                    <div class="category-hover-line"></div>
                 </a>
             </div>
         </div>
@@ -286,6 +653,7 @@
                         </div>
                         <a href="detail/kertas-hvs-a4-f4.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- 2. Meja Kerja Staf -->
@@ -309,6 +677,7 @@
                         </div>
                         <a href="detail/meja-kerja-staf-m-120.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- 3. Kursi Direktur -->
@@ -332,6 +701,7 @@
                         </div>
                         <a href="detail/kursi-direktur-executive-k-80.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- 4. Lemari Arsip -->
@@ -355,6 +725,7 @@
                         </div>
                         <a href="detail/lemari-arsip-besi-pintu-geser-kaca-l-180.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- 5. Videotron LED -->
@@ -378,6 +749,7 @@
                         </div>
                         <a href="detail/videotron-led-indoor-p2.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- 6. Interactive Flat Panel -->
@@ -401,6 +773,7 @@
                         </div>
                         <a href="detail/interactive-flat-panel-65-inch-4k.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- 7. Digital Whiteboard -->
@@ -424,6 +797,7 @@
                         </div>
                         <a href="detail/digital-whiteboard-55-inch-portable.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
                 <!-- 8. Sofa Tamu -->
@@ -447,6 +821,7 @@
                         </div>
                         <a href="detail/set-sofa-tamu-kantor-leather-3-1-1.html" class="btn-detail"><i class="fas fa-shopping-cart"></i> Beli Sekarang</a>
                     </div>
+                    <div class="product-hover-line"></div>
                 </div>
 
             </div>
@@ -468,7 +843,7 @@
                 <!-- Paket 1: Kantor Baru / Startup -->
                 <div class="package-card-elegant">
                     <div class="package-thumb">
-                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80" alt="Paket Kantor Baru MAROON ATK" loading="lazy" />
+                        <img src="assets/image/PAKET/Paket-Kantor-Baru.webp" alt="Paket Kantor Baru MAROON ATK" loading="lazy" />
                     </div>
                     <div class="package-body">
                         <div class="package-icon-wrap">
@@ -491,7 +866,7 @@
                 <div class="package-card-elegant" style="position:relative;">
                     <span style="position:absolute;top:14px;right:14px;background:var(--primary-maroon);color:#fff;font-size:0.7rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:50px;text-transform:uppercase;z-index:5;box-shadow:0 2px 8px rgba(128,0,32,0.3);">Paling Populer</span>
                     <div class="package-thumb">
-                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Paket Smart Meeting Room MAROON ATK" loading="lazy" />
+                        <img src="assets/image/PAKET/Paket-Smart-Meeting-Room.webp" alt="Paket Smart Meeting Room MAROON ATK" loading="lazy" />
                     </div>
                     <div class="package-body">
                         <div class="package-icon-wrap">
@@ -513,7 +888,7 @@
                 <!-- Paket 3: Pengadaan ATK Rutin -->
                 <div class="package-card-elegant">
                     <div class="package-thumb">
-                        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80" alt="Paket ATK Rutin MAROON ATK" loading="lazy" />
+                        <img src="assets/image/PAKET/Paket-Pengadaan-ATK-Rutin.webp" alt="Paket ATK Rutin MAROON ATK" loading="lazy" />
                     </div>
                     <div class="package-body">
                         <div class="package-icon-wrap">
@@ -553,6 +928,7 @@
                         <h3>Produk Berkualitas</h3>
                         <p>Seluruh produk diseksi secara ketat untuk menjamin ketahanan, fungsionalitas, dan standar operasional kantor.</p>
                     </div>
+                    <div class="value-hover-line"></div>
                 </div>
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-tags"></i></div>
@@ -560,6 +936,7 @@
                         <h3>Harga Kompetitif</h3>
                         <p>Penawaran harga terbaik untuk pembelian partai besar maupun paket pengadaan bertahap.</p>
                     </div>
+                    <div class="value-hover-line"></div>
                 </div>
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-handshake"></i></div>
@@ -567,6 +944,7 @@
                         <h3>Supplier & Vendor Terpercaya</h3>
                         <p>Pengalaman luas melayani berbagai proyek pengadaan kebutuhan kantor dan pendidikan.</p>
                     </div>
+                    <div class="value-hover-line"></div>
                 </div>
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-file-invoice-dollar"></i></div>
@@ -574,6 +952,7 @@
                         <h3>Mendukung Pengadaan Instansi</h3>
                         <p>Siap membantu kelengkapan dokumen penawaran, invoice resmi, dan administrasi pengadaan.</p>
                     </div>
+                    <div class="value-hover-line"></div>
                 </div>
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-boxes"></i></div>
@@ -581,6 +960,7 @@
                         <h3>Pilihan Produk Lengkap</h3>
                         <p>Satu pintu untuk kebutuhan ATK, furniture kayu & besi, hingga papan tulis digital interaktif.</p>
                     </div>
+                    <div class="value-hover-line"></div>
                 </div>
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-comments"></i></div>
@@ -588,6 +968,7 @@
                         <h3>Konsultasi Kebutuhan</h3>
                         <p>Tim berpengalaman yang siap memberikan rekomendasi produk sesuai anggaran dan tata ruang Anda.</p>
                     </div>
+                    <div class="value-hover-line"></div>
                 </div>
             </div>
             <div class="section-divider"></div>
@@ -601,22 +982,25 @@
                     <div class="reason-icon"><i class="fas fa-file-contract"></i></div>
                     <h3>Dokumen Penawaran Lengkap</h3>
                     <p>Kami menyiapkan Surat Penawaran Harga (SPH), Rincian Spesifikasi Teknis, serta Faktur Resmi untuk keperluan pengadaan instansi pemerintah (LPSE/SIPLah) dan perseroan terbatas.</p>
+                    <div class="reason-hover-line"></div>
                 </div>
                 <div class="reason-card">
                     <div class="reason-icon"><i class="fas fa-truck-loading"></i></div>
                     <h3>Logistik & Pengiriman Aman</h3>
                     <p>Penanganan pengiriman terkoordinasi dengan pengemasan rapi untuk memastikan seluruh unit barang (termasuk kaca, panel digital, dan furniture berat) tiba dengan sempurna.</p>
+                    <div class="reason-hover-line"></div>
                 </div>
                 <div class="reason-card">
                     <div class="reason-icon"><i class="fas fa-tools"></i></div>
                     <h3>Layanan Pemasangan & Garansi</h3>
                     <p>Pemasangan dilakukan oleh teknisi profesional untuk unit furniture knocking down dan instalasi Videotron / Smart Board disertai jaminan garansi produk purna jual.</p>
+                    <div class="reason-hover-line"></div>
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- ===== TESTIMONI ===== -->
+    <!-- ===== TESTIMONI ===== -->
     <section class="section section-bg-light">
         <div class="container">
             <div class="section-title">
@@ -638,6 +1022,7 @@
                             <p class="testi-role-modern">Kepala Subbagian Umum, Pemda Kabupaten Malang</p>
                         </div>
                     </div>
+                    <div class="testi-hover-line"></div>
                 </div>
 
                 <!-- 2. Siti Rahma -->
@@ -652,6 +1037,7 @@
                             <p class="testi-role-modern">Manajer Operasional, PT Bina Karya Sejahtera</p>
                         </div>
                     </div>
+                    <div class="testi-hover-line"></div>
                 </div>
 
                 <!-- 3. Dr. Budi Santoso -->
@@ -666,6 +1052,7 @@
                             <p class="testi-role-modern">Wakil Rektor Bidang Sarana, Universitas Merdeka Malang</p>
                         </div>
                     </div>
+                    <div class="testi-hover-line"></div>
                 </div>
 
                 <!-- 4. Dian Permata -->
@@ -680,9 +1067,10 @@
                             <p class="testi-role-modern">Facility Manager, PT Graha Mandiri Group</p>
                         </div>
                     </div>
+                    <div class="testi-hover-line"></div>
                 </div>
 
-                <!-- 5. [TAMBAHAN] Ir. Fajar Pratama -->
+                <!-- 5. Ir. Fajar Pratama -->
                 <div class="testimonial-card-modern">
                     <div class="testi-icon-modern"><i class="fas fa-quote-left"></i></div>
                     <div class="testi-stars-modern">★★★★★</div>
@@ -694,9 +1082,10 @@
                             <p class="testi-role-modern">Direktur Utama, PT Nusantara Jaya Abadi</p>
                         </div>
                     </div>
+                    <div class="testi-hover-line"></div>
                 </div>
 
-                <!-- 6. [TAMBAHAN] Dra. Retno Wulandari -->
+                <!-- 6. Dra. Retno Wulandari -->
                 <div class="testimonial-card-modern">
                     <div class="testi-icon-modern"><i class="fas fa-quote-left"></i></div>
                     <div class="testi-stars-modern">★★★★★</div>
@@ -708,6 +1097,7 @@
                             <p class="testi-role-modern">Kepala Bagian Perlengkapan, Dinas Pendidikan Provinsi Jawa Timur</p>
                         </div>
                     </div>
+                    <div class="testi-hover-line"></div>
                 </div>
             </div>
         </div>
