@@ -333,30 +333,7 @@ p:last-child {
   letter-spacing: 0.01em;
 }
 
-/* Underline Animasi (dari tengah) */
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2.5px;
-  background-color: var(--primary-maroon);
-  border-radius: var(--radius-pill);
-  transition: var(--transition);
-  transform: translateX(-50%);
-}
 
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--primary-maroon);
-  transform: translateY(-1px);
-}
 
 /* Nav Dropdown dengan animasi */
 .nav-item-dropdown {
