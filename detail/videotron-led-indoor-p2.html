@@ -784,33 +784,36 @@
       <!-- KIRI: GALERI GAMBAR -->
       <div class="product-gallery">
         <div class="main-image-wrapper">
-          <div class="badge-discount">20%</div>
+          <!-- Badge diskon 10% sesuai contoh -->
+          <div class="badge-discount">10</div>
           <div class="zoom-btn" id="zoomBtn" title="Perbesar Gambar">
             <i class="fas fa-search-plus"></i>
           </div>
           <button class="gallery-nav-btn btn-prev" id="prevBtn" aria-label="Gambar sebelumnya"><i class="fas fa-chevron-left"></i></button>
           <button class="gallery-nav-btn btn-next" id="nextBtn" aria-label="Gambar berikutnya"><i class="fas fa-chevron-right"></i></button>
-          <img id="mainImage" src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=800&q=80" alt="Videotron LED Indoor P2/P2.5" />
+          <!-- Gambar utama menggunakan path lokal -->
+          <img id="mainImage" src="../assets/image/VIDEOTRON/Videotron-LED-SLIDE-1.webp" alt="Videotron LED Indoor P2/P2.5" />
         </div>
 
         <div class="thumbnail-grid" id="thumbnailGrid">
+          <!-- Semua thumbnail menggunakan gambar yang sama (hanya satu gambar di contoh) -->
           <div class="thumbnail-item active" data-index="0">
-            <img src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=200&q=80" alt="Preview 1" />
+            <img src="../assets/image/VIDEOTRON/Videotron-LED-SLIDE-1.webp" alt="Preview 1" />
           </div>
           <div class="thumbnail-item" data-index="1">
-            <img src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=200&q=80&crop=center&h=200" alt="Preview 2" />
+            <img src="../assets/image/VIDEOTRON/Videotron-LED-SLIDE-2.webp" alt="Preview 2" />
           </div>
           <div class="thumbnail-item" data-index="2">
-            <img src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=200&q=80&sat=-20" alt="Preview 3" />
+            <img src="../assets/image/VIDEOTRON/Videotron-LED-SLIDE-3.webp" alt="Preview 3" />
           </div>
           <div class="thumbnail-item" data-index="3">
-            <img src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=200&q=80&sat=20" alt="Preview 4" />
+            <img src="../assets/image/VIDEOTRON/Videotron-LED-SLIDE-4.webp" alt="Preview 4" />
           </div>
           <div class="thumbnail-item" data-index="4">
-            <img src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=200&q=80&hue=30" alt="Preview 5" />
+            <img src="../assets/image/VIDEOTRON/Videotron-LED-SLIDE-5.webp" alt="Preview 5" />
           </div>
           <div class="thumbnail-item" data-index="5">
-            <img src="https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=200&q=80&hue=90" alt="Preview 6" />
+            <img src="../assets/image/VIDEOTRON/Videotron-LED-SLIDE-6.webp" alt="Preview 6" />
           </div>
         </div>
       </div>
@@ -819,7 +822,8 @@
       <div class="product-info">
         <div class="product-brand">MAROON ATK</div>
         <h1>Videotron LED Indoor P2 / P2.5 HD Display</h1>
-        <div class="product-subtitle">Layar LED Visual Tajam untuk Ruang Rapat & Command Center</div>
+        <!-- Subtitle sesuai varian dari card: High Refresh – 1920Hz -->
+        <div class="product-subtitle">High Refresh – 1920Hz</div>
         <div class="overall-size">Pixel Pitch = P2 / P2.5 • Module Size = 320 × 160 mm</div>
 
         <ul class="feature-list">
@@ -836,9 +840,10 @@
           Barang yang Anda terima mungkin akan ada sedikit perbedaan warna karena aspek pencahayaan foto dan resolusi monitor layar. Produk dikirim dalam bentuk modul-modul panel dengan panduan instalasi lengkap.
         </div>
 
+        <!-- Harga sesuai contoh: Rp18.500.000 (asli) dan Rp16.650.000 (diskon) -->
         <div class="product-price">
-          <span class="price-original">Rp15.000.000</span>
-          <span class="price-sale">Rp11.990.000 <small style="font-size:0.9rem; font-weight:400; color:var(--text-muted);">/ panel</small></span>
+          <span class="price-original">Rp18.500.000</span>
+          <span class="price-sale">Rp16.650.000 <small style="font-size:0.9rem; font-weight:400; color:var(--text-muted);">/ panel</small></span>
         </div>
 
         <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20memesan%20Videotron%20LED%20Indoor%20P2%2FP2.5%20HD%20Display." target="_blank" class="btn-order-now">
@@ -927,13 +932,14 @@
   <!-- ===== JAVASCRIPT GALERI + LIGHTBOX ===== -->
   <script>
     (function() {
+      // Gunakan path lokal untuk semua gambar (hanya satu gambar tersedia di contoh)
       const images = [
-        "https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=800&q=80&crop=center&h=800",
-        "https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=800&q=80&sat=-20",
-        "https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=800&q=80&sat=20",
-        "https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=800&q=80&hue=30",
-        "https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=800&q=80&hue=90"
+        "../assets/image/VIDEOTRON/Videotron-LED-SLIDE-1.webp",
+        "../assets/image/VIDEOTRON/Videotron-LED-SLIDE-2.webp",
+        "../assets/image/VIDEOTRON/Videotron-LED-SLIDE-3.webp",
+        "../assets/image/VIDEOTRON/Videotron-LED-SLIDE-4.webp",
+        "../assets/image/VIDEOTRON/Videotron-LED-SLIDE-5.webp",
+        "../assets/image/VIDEOTRON/Videotron-LED-SLIDE-6.webp"
       ];
 
       let currentIndex = 0;

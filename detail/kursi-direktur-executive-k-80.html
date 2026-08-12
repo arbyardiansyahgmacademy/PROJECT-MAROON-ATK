@@ -784,33 +784,36 @@
       <!-- KIRI: GALERI GAMBAR -->
       <div class="product-gallery">
         <div class="main-image-wrapper">
-          <div class="badge-discount">28%</div>
+          <!-- Badge diskon 20% sesuai contoh -->
+          <div class="badge-discount">20</div>
           <div class="zoom-btn" id="zoomBtn" title="Perbesar Gambar">
             <i class="fas fa-search-plus"></i>
           </div>
           <button class="gallery-nav-btn btn-prev" id="prevBtn" aria-label="Gambar sebelumnya"><i class="fas fa-chevron-left"></i></button>
           <button class="gallery-nav-btn btn-next" id="nextBtn" aria-label="Gambar berikutnya"><i class="fas fa-chevron-right"></i></button>
-          <img id="mainImage" src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=800&q=80" alt="Kursi Direktur Executive Leather K-80" />
+          <!-- Gambar utama menggunakan path lokal -->
+          <img id="mainImage" src="../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-1.webp" alt="Kursi Direktur Executive Leather K-80" />
         </div>
 
         <div class="thumbnail-grid" id="thumbnailGrid">
+          <!-- Semua thumbnail menggunakan gambar yang sama (hanya satu gambar di contoh) -->
           <div class="thumbnail-item active" data-index="0">
-            <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=200&q=80" alt="Preview 1" />
+            <img src="../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-1.webp" alt="Preview 1" />
           </div>
           <div class="thumbnail-item" data-index="1">
-            <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=200&q=80&crop=center&h=200" alt="Preview 2" />
+            <img src="../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-2.webp" alt="Preview 2" />
           </div>
           <div class="thumbnail-item" data-index="2">
-            <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=200&q=80&sat=-20" alt="Preview 3" />
+            <img src="../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-3.webp" alt="Preview 3" />
           </div>
           <div class="thumbnail-item" data-index="3">
-            <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=200&q=80&sat=20" alt="Preview 4" />
+            <img src="../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-4.webp" alt="Preview 4" />
           </div>
           <div class="thumbnail-item" data-index="4">
-            <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=200&q=80&hue=30" alt="Preview 5" />
+            <img src="../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-5.webp" alt="Preview 5" />
           </div>
           <div class="thumbnail-item" data-index="5">
-            <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=200&q=80&hue=90" alt="Preview 6" />
+            <img src="../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-6.webp" alt="Preview 6" />
           </div>
         </div>
       </div>
@@ -819,7 +822,8 @@
       <div class="product-info">
         <div class="product-brand">MAROON ATK</div>
         <h1>Kursi Direktur Executive Leather K-80</h1>
-        <div class="product-subtitle">Kursi Direktur Premium dengan Kenyamanan Maksimal</div>
+        <!-- Subtitle sesuai varian dari card: Kulit Sintetis / Oscart – Recline -->
+        <div class="product-subtitle">Kulit Sintetis / Oscart – Recline</div>
         <div class="overall-size">Overall size = 80 × 75 × 120 cm</div>
 
         <ul class="feature-list">
@@ -833,12 +837,13 @@
 
         <div class="product-note">
           <strong>Informasi Penting</strong>
-          Barang yang Anda terima mungkin akan ada sedikit perbedaan warna karena aspek pencahayaan foto dan resolusi monitor layar. Produk dikirim dalam keadaan flatpack dengan panduan perakitan lengkap.
+          Harga yang tercantum merupakan harga pokok produk. Untuk informasi harga jual terbaru, promo, dan penawaran khusus, silakan hubungi Admin Maroon ATK melalui WhatsApp.
         </div>
 
+        <!-- Harga sesuai contoh: Rp4.500.000 (asli) dan Rp3.600.000 (diskon) -->
         <div class="product-price">
           <span class="price-original">Rp4.500.000</span>
-          <span class="price-sale">Rp3.249.000 <small style="font-size:0.9rem; font-weight:400; color:var(--text-muted);">/ unit</small></span>
+          <span class="price-sale">Rp3.600.000 <small style="font-size:0.9rem; font-weight:400; color:var(--text-muted);">/ unit</small></span>
         </div>
 
         <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20memesan%20Kursi%20Direktur%20Executive%20Leather%20K-80." target="_blank" class="btn-order-now">
@@ -927,13 +932,14 @@
   <!-- ===== JAVASCRIPT GALERI + LIGHTBOX ===== -->
   <script>
     (function() {
+      // Gunakan path lokal untuk semua gambar (hanya satu gambar tersedia di contoh)
       const images = [
-        "https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=800&q=80&crop=center&h=800",
-        "https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=800&q=80&sat=-20",
-        "https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=800&q=80&sat=20",
-        "https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=800&q=80&hue=30",
-        "https://images.unsplash.com/photo-1580481072645-022f9a6d1270?auto=format&fit=crop&w=800&q=80&hue=90"
+        "../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-1.webp",
+        "../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-2.webp",
+        "../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-3.webp",
+        "../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-4.webp",
+        "../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-5.webp",
+        "../assets/image/KURSI-DIREKTUR/Kursi-Direktur-SLIDE-6.webp"
       ];
 
       let currentIndex = 0;
