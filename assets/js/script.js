@@ -105,37 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================
-    // 5. PAGE TRANSITION (Smooth antar halaman)
-    // ==========================================
-    const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"], a[href^="index"], a[href^="tentang"], a[href^="produk"], a[href^="paket"], a[href^="blog"], a[href^="kontak"], a[href^="detail"]');
-
-    internalLinks.forEach(function(link) {
-        if (link.target === '_blank') return;
-        if (link.getAttribute('href') === '#') return;
-        if (link.getAttribute('href') === '') return;
-        if (link.classList.contains('dropdown-toggle')) return;
-
-        link.addEventListener('click', function(e) {
-            if (e.ctrlKey || e.metaKey) return;
-
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('http') && !href.includes(window.location.hostname)) return;
-
-            e.preventDefault();
-            document.body.classList.add('page-transition');
-
-            setTimeout(function() {
-                window.location.href = href;
-            }, 400);
-        });
-    });
-
-    window.addEventListener('pageshow', function() {
-        document.body.classList.remove('page-transition');
-    });
-
-    // ==========================================
-    // 6. FAQ ACCORDION
+    // 5. FAQ ACCORDION
     // ==========================================
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(function(item) {
@@ -158,12 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ==========================================
-    // 7. ABOUT SLIDER (Otomatis dari HTML)
-    // ==========================================
-    // Slider sudah dijalankan dari script inline di index.html
-
-    // ==========================================
-    // 8. NAVBAR ACTIVE STATE (PERBAIKAN UTAMA)
+    // 6. NAVBAR ACTIVE STATE
     // ==========================================
     function setActiveNavLink() {
         const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
@@ -176,20 +141,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Bersihkan href dari leading './' atau '/'
-            let hrefClean = href.replace(/^\.\//, '').replace(/^\//, '');
+            // Bersihkan href dari leading './' atau '/' atau '../'
+            let hrefClean = href.replace(/^\.\.\//, '').replace(/^\.\//, '').replace(/^\//, '');
             let currentClean = currentPath.replace(/^\//, '');
 
             // Kasus root (index)
             if (hrefClean === '' || hrefClean === 'index.html') {
-                const isRoot = (currentClean === '' || currentClean === 'index.html');
+                const isRoot = (currentClean === '' || currentClean === 'index.html' || currentClean.endsWith('/index.html'));
                 link.classList.toggle('active', isRoot);
                 return;
             }
 
-            // Cek apakah currentClean dimulai dengan hrefClean (untuk parent menu seperti /produk)
-            // Pastikan hanya mencocokkan segmen path, bukan partial (misal /produk tidak cocok dengan /produk-detail)
+            // Cek apakah currentClean cocok dengan hrefClean
             const isMatch = (currentClean === hrefClean) || 
+                            currentClean.endsWith(hrefClean) ||
                             currentClean.startsWith(hrefClean + '/');
 
             link.classList.toggle('active', isMatch);
@@ -198,16 +163,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Jalankan pertama kali saat halaman dimuat
     setActiveNavLink();
-
-    // Perbarui active state saat link navbar diklik (bukan dropdown toggle)
-    document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Hapus active dari semua link
-            document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(l => l.classList.remove('active'));
-            // Beri active ke link yang diklik
-            this.classList.add('active');
-        });
-    });
 
     console.log('MAROON ATK - Website loaded successfully.');
 });
