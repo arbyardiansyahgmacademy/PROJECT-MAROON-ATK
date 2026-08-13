@@ -109,9 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(function(item) {
-        const question = item.querySelector('.faq-question');
+        const question = item.querySelector('.faq-question, .question');
         if (question) {
-            question.addEventListener('click', function() {
+            question.addEventListener('click', function(e) {
+                e.preventDefault();
                 const isActive = item.classList.contains('active');
                 faqItems.forEach(function(other) {
                     if (other !== item) {

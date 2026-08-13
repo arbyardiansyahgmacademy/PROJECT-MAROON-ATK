@@ -1,4 +1,105 @@
+# ============================================================
+# robots.txt - MAROON ATK (https://maroonatk.web.id)
+# Supplier Peralatan Kantor, ATK, Furniture, Videotron & Smart Display
+# Dioptimasi untuk SEO, AEO, dan GEO
+# ============================================================
+
+# -----------------------------------------------------------
+# Izinkan semua crawler (Googlebot, Bingbot, dll.)
+# -----------------------------------------------------------
 User-agent: *
 Allow: /
 
+# -----------------------------------------------------------
+# Direktori & File yang DIBLOKIR dari crawling
+# (aset teknis, file konfigurasi, folder git)
+# -----------------------------------------------------------
+Disallow: /.git/
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /404.html
+
+# -----------------------------------------------------------
+# Izinkan Crawler Mengakses Gambar (penting untuk Image SEO)
+# -----------------------------------------------------------
+User-agent: Googlebot-Image
+Allow: /assets/image/
+
+# -----------------------------------------------------------
+# Izinkan Googlebot crawl JS dan CSS (diperlukan untuk render)
+# -----------------------------------------------------------
+User-agent: Googlebot
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /
+Disallow: /.git/
+
+# -----------------------------------------------------------
+# Aturan khusus untuk AI Crawler / LLM bots
+# (AEO & GEO: agar konten bisa diindeks oleh AI Answer Engines)
+# -----------------------------------------------------------
+
+# GPTBot (OpenAI / ChatGPT)
+User-agent: GPTBot
+Allow: /
+Disallow: /.git/
+
+# Google-Extended (Google AI / Gemini)
+User-agent: Google-Extended
+Allow: /
+Disallow: /.git/
+
+# Anthropic (Claude AI)
+User-agent: anthropic-ai
+Allow: /
+Disallow: /.git/
+
+# ClaudeBot
+User-agent: ClaudeBot
+Allow: /
+Disallow: /.git/
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Disallow: /.git/
+
+# Meta AI (LLaMA)
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /.git/
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+Disallow: /.git/
+
+# Amazon AI (Alexa / Bedrock)
+User-agent: Amazonbot
+Allow: /
+Disallow: /.git/
+
+# Bing / Copilot
+User-agent: bingbot
+Allow: /
+Disallow: /.git/
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /.git/
+
+# Apple Applebot (Siri)
+User-agent: Applebot
+Allow: /
+Disallow: /.git/
+
+# -----------------------------------------------------------
+# Sitemap Location (XML Sitemap)
+# -----------------------------------------------------------
 Sitemap: https://maroonatk.web.id/sitemap.xml
+
+# -----------------------------------------------------------
+# Crawl Delay (opsional - hindari server overload)
+# -----------------------------------------------------------
+Crawl-delay: 1
