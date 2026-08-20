@@ -61,7 +61,7 @@
       }
     }
 
-    /* ===== PAKET CARD ELEGAN (tetap seperti sebelumnya) ===== */
+    /* ===== PAKET CARD ELEGAN (SMOOTH 60FPS HARDWARE ACCELERATED) ===== */
     .package-grid-elegant {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
@@ -70,70 +70,119 @@
 
     .package-card-elegant {
       background: var(--bg-card, #ffffff);
-      border-radius: var(--radius-md, 12px);
-      border: 1px solid var(--border-color, #e0e0e0);
+      border-radius: 16px;
+      border: 1px solid rgba(122, 26, 26, 0.1);
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+      will-change: transform, box-shadow;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .package-card-elegant:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(122,26,26,0.10), 0 6px 16px rgba(0,0,0,0.05);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(122, 26, 26, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
+      border-color: rgba(122, 26, 26, 0.3);
+    }
+
+    .package-thumb {
+      position: relative;
+      overflow: hidden;
+      background: #1a050b;
+      height: 215px;
     }
 
     .package-card-elegant .package-thumb img {
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .package-card-elegant:hover .package-thumb img {
+      transform: scale(1.06);
     }
 
     .package-body {
-      padding: 1.5rem 1.5rem 2rem;
+      padding: 1.5rem 1.65rem 1.85rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .package-icon-wrap {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.5rem;
+      gap: 0.85rem;
+      margin-bottom: 0.65rem;
     }
 
     .package-icon-wrap i {
-      font-size: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, rgba(122, 26, 26, 0.08) 100%);
+      border: 1px solid rgba(201, 168, 76, 0.3);
       color: var(--primary-maroon, #7a1a1a);
-      width: 2.2rem;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(122, 26, 26, 0.06);
+    }
+
+    .package-card-elegant:hover .package-icon-wrap i {
+      transform: scale(1.12) rotate(-5deg);
+      background: linear-gradient(135deg, #7a1a1a 0%, #4a0f0f 100%);
+      color: #FBBF24;
+      border-color: #7a1a1a;
+      box-shadow: 0 6px 18px rgba(122, 26, 26, 0.3);
     }
 
     .package-icon-wrap h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text-dark, #111);
       margin: 0;
+      line-height: 1.25;
     }
 
     .package-sub {
       color: var(--text-muted, #6c757d);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       margin-bottom: 1rem;
+      line-height: 1.45;
     }
 
     .package-features {
       list-style: none;
       padding: 0;
-      margin: 0 0 1.5rem 0;
+      margin: 0 0 1.25rem 0;
+      flex: 1;
     }
 
     .package-features li {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
-      padding: 0.3rem 0;
-      font-size: 0.92rem;
-      color: var(--text-dark, #111);
-      border-bottom: 1px solid rgba(0,0,0,0.04);
+      gap: 0.65rem;
+      padding: 0.38rem 0;
+      font-size: 0.9rem;
+      color: #374151;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .package-features li:hover {
+      transform: translateX(4px);
+      color: #111827;
     }
 
     .package-features li:last-child {
@@ -142,30 +191,319 @@
 
     .package-features li i {
       color: var(--secondary-gold, #c9a84c);
-      font-size: 1rem;
-      margin-top: 0.2rem;
+      font-size: 0.95rem;
+      margin-top: 0.18rem;
+      flex-shrink: 0;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .package-features li:hover i {
+      transform: scale(1.18);
+      color: #f59e0b;
+    }
+
+    /* Package Actions */
+    .package-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .btn-package-detail {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      background: #ffffff;
+      color: var(--primary-maroon, #7a1a1a);
+      border: 1.5px solid var(--primary-maroon, #7a1a1a);
+      font-weight: 700;
+      padding: 0.65rem 1.15rem;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+
+    .btn-package-detail:hover {
+      background: #fdf2f4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122,26,26,0.15);
+      border-color: var(--dark-maroon, #4a0f0f);
+      color: var(--dark-maroon, #4a0f0f);
     }
 
     .btn-package {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      background: var(--primary-maroon, #7a1a1a);
-      color: #fff;
+      justify-content: center;
+      gap: 0.45rem;
+      background: linear-gradient(135deg, #7a1a1a 0%, #4a0f0f 100%);
+      color: #fff !important;
       border: none;
       font-weight: 700;
-      padding: 0.7rem 1.5rem;
+      padding: 0.68rem 1.25rem;
       border-radius: 50px;
       transition: all 0.25s ease;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
+      cursor: pointer;
     }
 
     .btn-package:hover {
-      background: var(--dark-maroon, #4a0f0f);
+      background: linear-gradient(135deg, #5c1111 0%, #300606 100%);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(128,0,32,0.3);
-      color: #fff;
+      box-shadow: 0 4px 14px rgba(122,26,26,0.35);
+      color: #fff !important;
+    }
+
+    /* ===== POPUP MODAL DETAIL PAKET ===== */
+    .pkg-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 2, 5, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pkg-modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .pkg-modal-dialog {
+      background: #ffffff;
+      width: 100%;
+      max-width: 760px;
+      max-height: 90vh;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35), 0 0 30px rgba(122, 26, 26, 0.2);
+      overflow-y: auto;
+      position: relative;
+      transform: scale(0.92) translateY(15px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(122, 26, 26, 0.12);
+    }
+
+    .pkg-modal-backdrop.active .pkg-modal-dialog {
+      transform: scale(1) translateY(0);
+    }
+
+    .pkg-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 1.1rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .pkg-modal-close:hover {
+      background: #7a1a1a;
+      color: #ffffff;
+      transform: rotate(90deg) scale(1.05);
+    }
+
+    .pkg-modal-header-visual {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+      background: #2a050d;
+    }
+
+    .pkg-modal-header-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pkg-modal-header-visual .pkg-modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(15,2,5,0.88) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+
+    .pkg-modal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(201, 168, 76, 0.95);
+      color: #1a050b;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      margin-bottom: 0.4rem;
+      align-self: flex-start;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pkg-modal-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .pkg-modal-main {
+      padding: 1.5rem 1.75rem;
+    }
+
+    .pkg-modal-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4b5563;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .pkg-modal-section-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 0 0 0.85rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pkg-modal-section-title i {
+      color: #7a1a1a;
+    }
+
+    .pkg-modal-items-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .pkg-modal-items-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 1.45;
+      background: #fdf8f8;
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
+      border-left: 3px solid #7a1a1a;
+    }
+
+    .pkg-modal-items-list li i {
+      color: #c9a84c;
+      font-size: 0.95rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .pkg-modal-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pkg-modal-benefit-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .pkg-modal-benefit-pill i {
+      color: #22c55e;
+      font-size: 0.9rem;
+    }
+
+    .pkg-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #f0f0f0;
+      flex-wrap: wrap;
+    }
+
+    .pkg-modal-btn-close {
+      padding: 0.65rem 1.25rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: #475569;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .pkg-modal-btn-close:hover {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    .pkg-modal-btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #ffffff !important;
+      padding: 0.68rem 1.35rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    }
+
+    .pkg-modal-btn-wa:hover {
+      background: #1eb954;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+      color: #ffffff !important;
     }
 
     /* Benefit Grid (tetap) */
@@ -488,7 +826,7 @@
     "></div>
   </section>
 
-  <!-- Section Cards Paket (Gaya Elegant seperti sebelumnya) -->
+  <!-- Section Cards Paket (6 Paket Lengkap) -->
   <section class="section">
     <div class="container">
       <div class="package-grid-elegant">
@@ -511,13 +849,20 @@
               <li><i class="fas fa-check-circle"></i> 2 Unit Lemari Arsip Besi Pintu Geser Kaca</li>
               <li><i class="fas fa-check-circle"></i> Starter Pack ATK Kantor Lengkap (Kertas, Pen, Odner)</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kantor%20Baru" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
+            <div class="package-actions">
+              <button type="button" class="btn-package-detail" data-package="paket-1">
+                <i class="fas fa-eye"></i> <span>Lihat Detail</span>
+              </button>
+              <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kantor%20Baru" target="_blank" class="btn-package">
+                <i class="fab fa-whatsapp"></i> <span>Minta Penawaran</span>
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Paket 2: Smart Meeting Room (Paling Populer) -->
         <div class="package-card-elegant" style="position:relative;">
-          <span style="position:absolute;top:14px;right:14px;background:var(--primary-maroon);color:#fff;font-size:0.7rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:50px;text-transform:uppercase;z-index:5;box-shadow:0 2px 8px rgba(128,0,32,0.3);">Paling Populer</span>
+          <span style="position:absolute;top:14px;right:14px;background:var(--primary-maroon, #7a1a1a);color:#fff;font-size:0.7rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:50px;text-transform:uppercase;z-index:5;box-shadow:0 2px 8px rgba(128,0,32,0.3);">Paling Populer</span>
           <div class="package-thumb">
             <img src="assets/image/PAKET/Paket-Smart-Meeting-Room.webp" alt="Paket Smart Meeting Room MAROON ATK" loading="lazy" />
           </div>
@@ -534,7 +879,14 @@
               <li><i class="fas fa-check-circle"></i> Camera & Microphone Array Video Conference</li>
               <li><i class="fas fa-check-circle"></i> Gratis Instalasi & Training Penggunaan</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Smart%20Meeting%20Room" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
+            <div class="package-actions">
+              <button type="button" class="btn-package-detail" data-package="paket-2">
+                <i class="fas fa-eye"></i> <span>Lihat Detail</span>
+              </button>
+              <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Smart%20Meeting%20Room" target="_blank" class="btn-package">
+                <i class="fab fa-whatsapp"></i> <span>Minta Penawaran</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -556,7 +908,14 @@
               <li><i class="fas fa-check-circle"></i> Pulpen, Marker, Staples, & Perlengkapan Meja</li>
               <li><i class="fas fa-check-circle"></i> Jadwal Pengiriman Berkala & Invoice Resmi</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Pengadaan%20ATK%20Rutin" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
+            <div class="package-actions">
+              <button type="button" class="btn-package-detail" data-package="paket-3">
+                <i class="fas fa-eye"></i> <span>Lihat Detail</span>
+              </button>
+              <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Pengadaan%20ATK%20Rutin" target="_blank" class="btn-package">
+                <i class="fab fa-whatsapp"></i> <span>Minta Penawaran</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -578,7 +937,72 @@
               <li><i class="fas fa-check-circle"></i> Lemari Penyimpanan Laptop / Tablet Kunci</li>
               <li><i class="fas fa-check-circle"></i> Garansi Unit & Pendampingan Teknis</li>
             </ul>
-            <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kelas%20Digital" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Minta Penawaran Paket</a>
+            <div class="package-actions">
+              <button type="button" class="btn-package-detail" data-package="paket-4">
+                <i class="fas fa-eye"></i> <span>Lihat Detail</span>
+              </button>
+              <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Kelas%20Digital" target="_blank" class="btn-package">
+                <i class="fab fa-whatsapp"></i> <span>Minta Penawaran</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paket 5: Auditorium & Hall Videotron Modern (BARU) -->
+        <div class="package-card-elegant">
+          <div class="package-thumb">
+            <img src="assets/image/VIDEOTRON/Videotron-LED-SLIDE-1.webp" alt="Paket Auditorium Videotron MAROON ATK" loading="lazy" />
+          </div>
+          <div class="package-body">
+            <div class="package-icon-wrap">
+              <i class="fas fa-tv"></i>
+              <h3>Paket Auditorium &amp; Hall Videotron</h3>
+            </div>
+            <div class="package-sub">Solusi display visual panggung berskala besar untuk ruang aula, auditorium &amp; ballroom.</div>
+            <ul class="package-features">
+              <li><i class="fas fa-check-circle"></i> 1 Set Videotron Indoor P2.5 / P3 High Refresh Rate</li>
+              <li><i class="fas fa-check-circle"></i> Video Processor 4K &amp; Sending Box Terintegrasi</li>
+              <li><i class="fas fa-check-circle"></i> Konstruksi Frame &amp; Rigging Magnetic Fast Maintenance</li>
+              <li><i class="fas fa-check-circle"></i> Sound System Line Array + Wireless Mic Conference</li>
+              <li><i class="fas fa-check-circle"></i> Garansi Resmi Panel 2 Tahun &amp; Free Survey Lokasi</li>
+            </ul>
+            <div class="package-actions">
+              <button type="button" class="btn-package-detail" data-package="paket-5">
+                <i class="fas fa-eye"></i> <span>Lihat Detail</span>
+              </button>
+              <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Auditorium%20%26%20Videotron" target="_blank" class="btn-package">
+                <i class="fab fa-whatsapp"></i> <span>Minta Penawaran</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paket 6: Ruang Eksekutif & VIP Lounge (BARU) -->
+        <div class="package-card-elegant">
+          <div class="package-thumb">
+            <img src="assets/image/SET-SOFA-TAMU/Set-Sofa-Tamu-SLIDE-1.webp" alt="Paket Ruang Eksekutif VIP MAROON ATK" loading="lazy" />
+          </div>
+          <div class="package-body">
+            <div class="package-icon-wrap">
+              <i class="fas fa-couch"></i>
+              <h3>Paket Ruang Eksekutif &amp; VIP Lounge</h3>
+            </div>
+            <div class="package-sub">Penataan interior mewah dan prestisius untuk ruang pimpinan, direksi &amp; tamu VIP.</div>
+            <ul class="package-features">
+              <li><i class="fas fa-check-circle"></i> 1 Set Meja Direktur Kayu Solid M-200 Melamic + Cable Box</li>
+              <li><i class="fas fa-check-circle"></i> 1 Unit Kursi Direktur Utama Genuine Leather Reclining</li>
+              <li><i class="fas fa-check-circle"></i> 1 Set Sofa Tamu VIP Luxury (3+2+1 Seater + Meja Kaca)</li>
+              <li><i class="fas fa-check-circle"></i> 1 Unit Lemari Kredensa Arsip &amp; Display Piala 4 Pintu</li>
+              <li><i class="fas fa-check-circle"></i> Paket Starter Desk Pad Kulit &amp; Dokumen Tray Gold Trim</li>
+            </ul>
+            <div class="package-actions">
+              <button type="button" class="btn-package-detail" data-package="paket-6">
+                <i class="fas fa-eye"></i> <span>Lihat Detail</span>
+              </button>
+              <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK%2C%20saya%20ingin%20meminta%20penawaran%20Paket%20Ruang%20Eksekutif%20%26%20VIP%20Lounge" target="_blank" class="btn-package">
+                <i class="fab fa-whatsapp"></i> <span>Minta Penawaran</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -689,9 +1113,258 @@
         </div>
     </footer>
 
-  <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK" target="_blank" class="float-wa"><i class="fab fa-whatsapp"></i></a>
+  <!-- ===== MODAL POPUP DETAIL PAKET ===== -->
+  <div id="packageModal" class="pkg-modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="pkg-modal-dialog">
+      <button type="button" class="pkg-modal-close" id="pkgModalClose" aria-label="Tutup Detail Paket">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="pkgModalBody">
+        <!-- Content will be rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/6288989643555?text=Halo%20MAROON%20ATK" target="_blank" class="float-wa" aria-label="Chat WhatsApp MAROON ATK">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">Hubungi Kami (0889-8964-3555)</span>
+  </a>
   <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="assets/js/script.js"></script>
+
+  <!-- Script Modal Detail Paket -->
+  <script>
+    (function() {
+      const packageData = {
+        'paket-1': {
+          tag: 'SOLUSI WORKSPACE LENGKAP',
+          title: 'Paket Kantor Baru / Startup',
+          image: 'assets/image/PAKET/Paket-Kantor-Baru.webp',
+          desc: 'Paket ini dirancang khusus bagi perusahaan baru, startup, maupun cabang kantor baru yang membutuhkan perlengkapan kerja fungsional, tahan lama, dan berpenampilan profesional dalam satu paket pengadaan terpadu.',
+          items: [
+            '5 - 10 Unit Meja Kerja Staf Minimalis M-120 (Bahan Particle Board Grade A, Finishing Melamine Anti Air & Gores)',
+            '5 - 10 Unit Kursi Kerja Mesh Ergonomis K-40 (Hydraulic Gaslift, Lumbar Support, Sandaran Jaring Bernapas)',
+            '1 Unit Meja Direktur Eksekutif M-180 Kayu Solid + Kursi Direktur Leather Reclining',
+            '2 Unit Lemari Arsip Besi Pintu Geser Kaca (Kunci Sentral, Plat Besi Tebal 0.7mm Anti Karat)',
+            'Starter Pack ATK Kantor Lengkap (Kertas HVS 5 Rim, Odner, Pulpen Box, Stapler, Kalkulator, Tempat File & Keranjang Dokumen)'
+          ],
+          benefits: [
+            'Free Konsultasi Tata Ruang',
+            'Free Pengiriman & Instalasi',
+            'Garansi Resmi 1-2 Tahun',
+            'Dokumen SPK & Faktur Pajak'
+          ],
+          waText: 'Halo MAROON ATK, saya tertarik dengan Paket Kantor Baru / Startup. Mohon info penawaran harga detail dan estimasi pengiriman.'
+        },
+        'paket-2': {
+          tag: 'BEST SELLER INSTANSI & KORPORAT',
+          title: 'Paket Smart Meeting Room',
+          image: 'assets/image/PAKET/Paket-Smart-Meeting-Room.webp',
+          desc: 'Ubah ruang rapat konvensional menjadi Smart Meeting Room interaktif berteknologi tinggi dengan Interactive Flat Panel 4K dan sistem konferensi audio-visual terintegrasi untuk instansi pemerintah, BUMN, dan korporat.',
+          items: [
+            '1 Unit Interactive Flat Panel (IFP) Smart Board 65" / 75" 4K UHD (Android + Windows OPS Dual OS, Multi Touch 40 Points)',
+            '1 Set Meja Rapat Konferensi Premium Kapasitas 8-12 Orang dengan Jalur Kabel (Integrated Cable Management Box)',
+            '8 - 12 Unit Kursi Rapat Ergonomis Hydro Cantilever / Swivel dengan Busa High Density',
+            '1 Set 4K Ultra Wide Camera Video Conference + Auto Framing & Beamforming Microphone Array 8 Meter Range',
+            'Bracket Standing Mobile Beroda Heavy Duty & Wall Mount Bracket Kokoh'
+          ],
+          benefits: [
+            'Free Instalasi & Cable Routing Rapi',
+            'Free Training Penggunaan Staf',
+            'Garansi Resmi Panel 3 Tahun',
+            'Support Pengadaan E-Katalog & SPK'
+          ],
+          waText: 'Halo MAROON ATK, saya tertarik dengan Paket Smart Meeting Room. Mohon info proposal penawaran resmi dan jadwal demo produk.'
+        },
+        'paket-3': {
+          tag: 'KONSUMSI BULANAN EFISIEN',
+          title: 'Paket Pengadaan ATK Rutin',
+          image: 'assets/image/PAKET/Paket-Pengadaan-ATK-Rutin.webp',
+          desc: 'Pastikan operasional kantor Anda tidak pernah kehabisan perlengkapan administrasi harian. Skema suplai terjadwal bulanan atau triwulanan dengan harga grosir langsung dari distributor resmi.',
+          items: [
+            'Suplai Kertas HVS A4 & F4 75gr/80gr Grosir Berkualitas (PaperOne / Sinar Dunia / Natural)',
+            'Tinta Printer & Toner Laser Original All Brands (Epson, Canon, HP, Brother, Fuji Xerox)',
+            'Perlengkapan Filing & Arsip Lengkap (Odner Bantex, Map Snellhecter, Map Folio, Amplop Kop Kantor)',
+            'Alat Tulis Harian (Ballpoint Box, Whiteboard Marker, Highlighter, Correction Tape, Pensil)',
+            'Aksesoris Meja & Pemotong (Stapler Heavy Duty, Isi Staples, Pemotong Kertas, Gunting, Binder Clip)'
+          ],
+          benefits: [
+            'Jadwal Suplai Berkala Tepat Waktu',
+            'Laporan Rekap Bulanan Rapi',
+            'TOP (Term of Payment) Fleksibel B2B',
+            'Jaminan 100% Produk Original & Pajak'
+          ],
+          waText: 'Halo MAROON ATK, saya ingin meminta katalog harga dan penawaran Paket Pengadaan ATK Rutin untuk kantor kami.'
+        },
+        'paket-4': {
+          tag: 'EDUKASI INTERAKTIF MODERN',
+          title: 'Paket Kelas Digital / Kampus',
+          image: 'assets/image/PAKET/Paket-Kelas-Digital-Kampus.webp',
+          desc: 'Mendukung modernisasi dan transformasi digital ruang belajar mengajar di sekolah, universitas, lab, dan lembaga pelatihan dengan papan tulis digital interaktif dan furniture pengajar ergonomis.',
+          items: [
+            '1 Unit Digital Smart Whiteboard 55" / 65" Touch Screen High Precision Writing & Anti-Glare Glass',
+            'Software Edukasi Interaktif & Wireless Screen Sharing Multi-Device (Laptop, Tablet, Smartphone)',
+            '1 Set Active Sound System Kelas + Wireless Microphone Clip-On / Handheld Jernih',
+            '1 Unit Meja / Podium Digital Dosen & Kursi Ergonomis Pengajar Berstandar',
+            '1 Unit Smart Charging Cabinet / Lemari Penyimpanan Laptop & Tablet dengan Kunci Pengaman'
+          ],
+          benefits: [
+            'Dukungan Sertifikasi & E-Katalog',
+            'Pelatihan Guru/Dosen Hingga Mahir',
+            'Garansi Unit Hardware & Software',
+            'Pendampingan Teknis Purna Jual'
+          ],
+          waText: 'Halo MAROON ATK, saya tertarik dengan Paket Kelas Digital / Kampus. Mohon info proposal penawaran resmi.'
+        },
+        'paket-5': {
+          tag: 'DISPLAY BESAR & AUDITORIUM',
+          title: 'Paket Auditorium & Hall Videotron',
+          image: 'assets/image/VIDEOTRON/Videotron-LED-SLIDE-1.webp',
+          desc: 'Paket display videotron LED indoor beresolusi tinggi yang dirancang untuk kebutuhan presentasi panggung akbar, seminar nasional, rapat paripurna, dan ruang serbaguna instansi maupun korporat.',
+          items: [
+            '1 Set Videotron LED Indoor High Refresh Rate P2.5 / P3 (Ukuran Custom: 3x2m, 4x2.5m, 6x3m, dll)',
+            '4K Video Processor & Sending Box System dengan Dukungan Multi-Input HDMI / SDI / DVI / USB',
+            'Konstruksi Frame Rangka Besi Hollow & Modul Magnetic Fast Maintenance System',
+            'Sound System Line Array Auditorium + Power Amplifier & Digital Audio Mixer',
+            'Paket Komputer Kontroler High-End Dedicated Server untuk Operasional Videotron'
+          ],
+          benefits: [
+            'Free Survey Lokasi & Desain 3D',
+            'Instalasi & Kalibrasi Tim Spesialis',
+            'Garansi Modul & Power Supply 2 Tahun',
+            'Support Standby & Maintenance Berkala'
+          ],
+          waText: 'Halo MAROON ATK, saya ingin berkonsultasi mengenai Paket Auditorium & Hall Videotron. Mohon survey lokasi dan estimasi biaya.'
+        },
+        'paket-6': {
+          tag: 'PREMIUM EXECUTIVE SUITE',
+          title: 'Paket Ruang Eksekutif & VIP Lounge',
+          image: 'assets/image/SET-SOFA-TAMU/Set-Sofa-Tamu-SLIDE-1.webp',
+          desc: 'Ciptakan ruang kerja pimpinan yang elegan, berwibawa, dan nyaman dengan kombinasi furniture kayu solid premium, sofa tamu kulit mewah, dan lemari arsip kredensa eksklusif.',
+          items: [
+            '1 Set Meja Direktur Kayu Solid M-200 Premium Finishing Melamic + Cable Box & Laci Kunci Sentral',
+            '1 Unit Kursi Direktur Utama Genuine Leather Ergonomic Reclining + Headrest & Lumbar Cushion',
+            '2 Unit Kursi Hadap Tamu Direktur Leather Matching Desain Mewah',
+            '1 Set Sofa Tamu VIP Luxury (Formasi 3+2+1 Seater + Meja Tamu Kaca Tempered)',
+            '1 Unit Lemari Kredensa Arsip & Display Piala/Piagam Eksekutif 4 Pintu',
+            'Set Aksesoris Meja Kulit Premium Gold Trim (Desk Pad, Pen Holder, Memo Tray)'
+          ],
+          benefits: [
+            'Konsultasi Konsep & Finishing Ruangan',
+            'Perakitan Presisi Tim Profesional',
+            'Garansi Bahan & Konstruksi 2 Tahun',
+            'Kelengkapan Dokumen SPK & Faktur Pajak'
+          ],
+          waText: 'Halo MAROON ATK, saya tertarik dengan Paket Ruang Eksekutif & VIP Lounge. Mohon info katalog produk dan penawaran harga.'
+        }
+      };
+
+      const modal = document.getElementById('packageModal');
+      const modalBody = document.getElementById('pkgModalBody');
+      const closeBtn = document.getElementById('pkgModalClose');
+
+      function openModal(pkgKey) {
+        const pkg = packageData[pkgKey];
+        if (!pkg) return;
+
+        const waUrl = 'https://wa.me/6288989643555?text=' + encodeURIComponent(pkg.waText);
+
+        const itemsHtml = pkg.items.map(item => `
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span>${item}</span>
+          </li>
+        `).join('');
+
+        const benefitsHtml = pkg.benefits.map(b => `
+          <div class="pkg-modal-benefit-pill">
+            <i class="fas fa-shield-halved"></i>
+            <span>${b}</span>
+          </div>
+        `).join('');
+
+        modalBody.innerHTML = `
+          <div class="pkg-modal-header-visual">
+            <img src="${pkg.image}" alt="${pkg.title}" loading="lazy">
+            <div class="pkg-modal-overlay">
+              <span class="pkg-modal-tag"><i class="fas fa-box-open"></i> ${pkg.tag}</span>
+              <h2 class="pkg-modal-title">${pkg.title}</h2>
+            </div>
+          </div>
+
+          <div class="pkg-modal-main">
+            <div class="pkg-modal-desc">
+              ${pkg.desc}
+            </div>
+
+            <h3 class="pkg-modal-section-title">
+              <i class="fas fa-list-check"></i> Rincian & Kelengkapan Paket
+            </h3>
+            <ul class="pkg-modal-items-list">
+              ${itemsHtml}
+            </ul>
+
+            <h3 class="pkg-modal-section-title">
+              <i class="fas fa-award"></i> Keuntungan & Jaminan Termasuk
+            </h3>
+            <div class="pkg-modal-benefits-grid">
+              ${benefitsHtml}
+            </div>
+
+            <div class="pkg-modal-footer">
+              <button type="button" class="pkg-modal-btn-close" id="pkgModalCloseFooter">Tutup</button>
+              <a href="${waUrl}" target="_blank" class="pkg-modal-btn-wa">
+                <i class="fab fa-whatsapp"></i> <span>Minta Penawaran Paket Ini</span>
+              </a>
+            </div>
+          </div>
+        `;
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Bind inner close button
+        const footerClose = document.getElementById('pkgModalCloseFooter');
+        if (footerClose) {
+          footerClose.addEventListener('click', closeModal);
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Bind all Detail buttons
+      document.querySelectorAll('.btn-package-detail').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const pkgKey = this.getAttribute('data-package');
+          openModal(pkgKey);
+        });
+      });
+
+      // Bind close button & backdrop click
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+      }
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Escape key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
