@@ -17,6 +17,7 @@ Allow: /
 Disallow: /.git/
 Disallow: /assets/css/
 Disallow: /assets/js/
+Disallow: /404
 Disallow: /404.html
 
 # -----------------------------------------------------------

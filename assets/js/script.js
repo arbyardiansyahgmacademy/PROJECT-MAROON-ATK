@@ -142,13 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Bersihkan href dari leading './' atau '/' atau '../'
-            let hrefClean = href.replace(/^\.\.\//, '').replace(/^\.\//, '').replace(/^\//, '');
-            let currentClean = currentPath.replace(/^\//, '');
+            // Bersihkan href dari leading './' atau '/' atau '../' dan ekstensi .html
+            let hrefClean = href.replace(/^\.\.\//, '').replace(/^\.\//, '').replace(/^\//, '').replace(/\.html$/, '');
+            let currentClean = currentPath.replace(/^\//, '').replace(/\.html$/, '').replace(/\/$/, '');
 
-            // Kasus root (index)
-            if (hrefClean === '' || hrefClean === 'index.html') {
-                const isRoot = (currentClean === '' || currentClean === 'index.html' || currentClean.endsWith('/index.html'));
+            // Kasus root (index / beranda)
+            if (hrefClean === '' || hrefClean === 'index' || hrefClean === 'beranda') {
+                const isRoot = (currentClean === '' || currentClean === 'index' || currentClean === 'beranda' || currentClean.endsWith('/index') || currentClean.endsWith('/beranda'));
                 link.classList.toggle('active', isRoot);
                 return;
             }
