@@ -1,35 +1,4 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/beranda",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/produk",
-      "destination": "/produk.html"
-    },
-    {
-      "source": "/blog",
-      "destination": "/blog.html"
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/index",
-      "destination": "/beranda",
-      "permanent": true
-    },
-    {
-      "source": "/index.html",
-      "destination": "/beranda",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "destination": "/beranda",
-      "permanent": false
-    }
-  ]
+  "trailingSlash": false
 }

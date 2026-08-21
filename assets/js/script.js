@@ -146,9 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let hrefClean = href.replace(/^\.\.\//, '').replace(/^\.\//, '').replace(/^\//, '').replace(/\.html$/, '');
             let currentClean = currentPath.replace(/^\//, '').replace(/\.html$/, '').replace(/\/$/, '');
 
-            // Kasus root (index / beranda)
-            if (hrefClean === '' || hrefClean === 'index' || hrefClean === 'beranda') {
-                const isRoot = (currentClean === '' || currentClean === 'index' || currentClean === 'beranda' || currentClean.endsWith('/index') || currentClean.endsWith('/beranda'));
+            // Kasus root (Homepage / Beranda -> '/')
+            if (hrefClean === '' || hrefClean === 'index') {
+                const isRoot = (currentClean === '' || currentClean === 'index');
                 link.classList.toggle('active', isRoot);
                 return;
             }
